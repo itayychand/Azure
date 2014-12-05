@@ -11,7 +11,6 @@ In this lab, you will take advantage of those technologies to implement Geek Qui
 
 This lab includes the following tasks:
 
-
 * [Adding a Global Administrator to your Active Directory](#adding-global-administrator-to-AAD)
 * [Creating the Initial Project for Geek Quiz](#creating-the-initial-project-for-geek-quiz)
 * [Creating the TriviaController Web API](#creating-the-triviacontroller-web-api)
@@ -19,7 +18,6 @@ This lab includes the following tasks:
 * [Creating the SPA Interface Using AngularJS](#creating-the-spa-interface-using-angularjs)
 * [Running the Single Page Application](#running-the-single-page-application)
 * [Creating a Flip Animation Using CSS3](#creating-a-flip-animation-using-css3)
-
 
 ## Adding a Global Administrator to your Active Directory
 
@@ -430,87 +428,125 @@ In this task you will verify that the Web API service you built in the previous 
 
 > **Note:** Make sure that Internet Explorer is selected in the Start button located on the Visual Studio toolbar.
 
-![Internet Explorer option](./images/.png)
+![Internet Explorer option](./images/runInIE.png)
 
 _Internet Explorer option_
 
-1. Press F5 to run the solution. The Log in page should appear in the browser.
+1. Press **F5** to run the solution. The Log in page should appear in the browser.
 
     > **Note:** When the application starts, the default MVC route is triggered, which by default is mapped to the Index action of the HomeController class. Since HomeController is restricted to authenticated users (remember that you decorated that class with the Authorize attribute in Exercise 1) and there is no user authenticated yet, the application redirects the original request to the log in page.
 
 2. Enter the Active Directory credentials.
 
+    ![Running the solution](./images/AdSigninScreen.png)
+    
+    _AD sign in screen_
+
+3. After successful logging the app will load the default action of the Home controller. Notice that the app shows the logged user at the top.
+
     ![Running the solution](./images/runningTheApp.png)
     
     _Running the solution_
-
-3. In the Register page, enter a User name and Password, and then click Register.
-
-    ![Register page](./images/.png)
     
-    _Register page_
+4. Click the name of the signed-in user at the top right of the page. This will take you to the **User Profile** page, which is an action on the Home Controller. You will notice that the table contains user information about the administrator account you created earlier. This information is stored in your directory, and the Graph API is called to retrieve this information when the page loads.
 
-4. The application registers the new account and the user is authenticated and redirected back to the home page.
+	> **Note:** The [Graph API](http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx) is the programmatic interface used to perform CRUD and other operations on objects in your Azure AD directory. If you select an Organizational Account option for authentication when creating a new project in Visual Studio, your application will already be configured to call the Graph API.
 
-    ![User is authenticated](./images/.png)
+	![User Profile page](./images/UserProfilePage.png)
     
-    _User is authenticated_
+    _User Profile page_
+    
+5. Go back to Visual Studio and expand the **Controllers** folder and then open the **HomeController.cs** file. You will see a **UserProfile()** action that contains code to retrieve a token and then call the Graph API. This code is duplicated below:
 
-5. In the browser, press F12 to open the Developer Tools panel. Press CTRL + 4 or click the Network icon, and then click the green arrow button to begin capturing network traffic.
+	<!-- mark:22 -->
+	````C#
+	[Authorize]
+	public async Task UserProfile()
+	{
+		string tenantId = ClaimsPrincipal.Current.FindFirst(TenantIdClaimType).Value;
 
-    ![Initiating Web API network capture](./images/.png)
+		// Get a token for calling the Windows Azure Active Directory Graph
+		AuthenticationContext authContext = new AuthenticationContext(String.Format(CultureInfo.InvariantCulture, LoginUrl, tenantId));
+		ClientCredential credential = new ClientCredential(AppPrincipalId, AppKey);
+		AuthenticationResult assertionCredential = authContext.AcquireToken(GraphUrl, credential);
+		string authHeader = assertionCredential.CreateAuthorizationHeader();
+		string requestUrl = String.Format(
+		    CultureInfo.InvariantCulture,
+		    GraphUserUrl,
+		    HttpUtility.UrlEncode(tenantId),
+		    HttpUtility.UrlEncode(User.Identity.Name));
+
+		HttpClient client = new HttpClient();
+		HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUrl);
+		request.Headers.TryAddWithoutValidation("Authorization", authHeader);
+		HttpResponseMessage response = await client.SendAsync(request);
+		string responseString = await response.Content.ReadAsStringAsync();
+		UserProfile profile = JsonConvert.DeserializeObject<UserProfile>(responseString);
+
+		return View(profile);
+	}
+	````
+
+	To call the Graph API, you first need to retrieve a token. When the token is retrieved, its string value must be appended in the Authorization header for all subsequent requests to the Graph API. Most of the code above handles the details of authenticating to Azure AD to get a token, using the token to make a call to the Graph API, and then transforming the response so that it can be presented in the View.
+The most relevant portion for discussion is the following highlighted line:
+`UserProfile profile = JsonConvert.DeserializeObject<UserProfile>(responseString);`
+This line represents the name of the user, which has been deserialized from the JSON response and is presented in the View.
+You can call the Graph API using HttpClient and handle the raw data yourself, but an easier way is to use the [Graph Client Library which is available via NuGet](http://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient/). The Client Library handles the raw HTTP requests and the transformation of the returned data for you, and makes it much easier to work with the Graph API in a .NET environment. See the related Graph API code samples on [GitHub](https://github.com/AzureADSamples>).
+
+6. Go back to Visual Studio, and browse back to the home page of the application.
+7. In the browser, press F12 to open the Developer Tools panel. Press CTRL + 4 or click the Network icon, and then click the green arrow button to begin capturing network traffic.
+
+    ![Initiating Web API network capture](./images/InitiatingWebApiNetworkCapture.png)
     
     _Initiating Web API network capture_
 
-6. Append api/trivia to the URL in the browser's address bar. You will now inspect the details of the response from the Get action method in TriviaController.
+8. Append api/trivia to the URL in the browser's address bar. You will now inspect the details of the response from the Get action method in TriviaController.
 
-    ![Retrieving the next question data through Web API](./images/.png)
+    ![Retrieving the next question data through Web API](./images/RetrievingTheNextQuestionDataWebApi.png)
     
     _Retrieving the next question data through Web API_
 
 	> **Note:** Once the download finishes, you will be prompted to make an action with the downloaded file. Leave the dialog box open in order to be able to watch the response content through the Developers Tool window.
 
-7. Now you will inspect the body of the response. To do this, click the Details tab and then click Response body. You can check that the downloaded data is an object with the properties options (which is a list of TriviaOption objects), id and title that correspond to the TriviaQuestion class.
+9. Now you will inspect the body of the response. To do this, click the Details tab and then click Response body. You can check that the downloaded data is an object with the properties options (which is a list of TriviaOption objects), id and title that correspond to the TriviaQuestion class.
 
-    ![Viewing Web API Response Body](./images/.png)
+    ![Viewing Web API Response Body](./images/ViewingWebApiResponseBody.png)
     
     _Viewing Web API Response Body_
 
-8. Go back to Visual Studio and press SHIFT + F5 to stop debugging.
+10. Go back to Visual Studio and press SHIFT + F5 to stop debugging.
 
 ## Creating the SPA Interface Using AngularJS
 
-In this task you will use AngularJS to implement the client side of the Geek Quiz application. AngularJS is an open-source JavaScript framework that augments browser-based applications with Model-View-Controller (MVC) capability, facilitating both development and testing.
+In this task you will use **AngularJS** to implement the client side of the Geek Quiz application. **AngularJS** is an open-source JavaScript framework that augments browser-based applications with Model-View-Controller (MVC) capability, facilitating both development and testing.
 
 You will start by installing AngularJS from Visual Studio's Package Manager Console. Then, you will create the controller to provide the behavior of the Geek Quiz app and the view to render the quiz questions and answers using the AngularJS template engine.
 
 > **Note:** For more information about AngularJS, refer to http://angularjs.org/.
 
-1. Open Visual Studio Express 2013 for Web and open the GeekQuiz.sln solution located in the Source/Ex2-CreatingASPAInterface/Begin folder. Alternatively, you can continue with the solution that you obtained in the previous exercise.
+1. Open the **Package Manager Console** from **Tools | Nuget Package Manager | Package Manager Console**. Type the following command to install the **AngularJS.Core** NuGet package.
 
-2. Open the Package Manager Console from Tools | Library Package Manager. Type the following command to install the AngularJS.Core NuGet package.
+    ````C#
+    Install-Package AngularJS.Core
+    ````
 
-    ![Install-Package AngularJS.Core](./images/.png)
+2. In **Solution Explorer**, right-click the **Scripts** folder of the **GeekQuiz** project and select **Add | New Folder**. Name the folder **app** and press **Enter**.
+
+3. Right-click the **app** folder you just created and select **Add | JavaScript** File.
+
+    ![Adding a new JavaScript file](./images/add-javascript-file.png)
     
-    _Install-Package AngularJS.Core_
+    _Adding a new JavaScript file_
 
-3. In Solution Explorer, right-click the Scripts folder of the GeekQuiz project and select Add | New Folder. Name the folder app and press Enter.
+4. In the Specify Name for Item dialog box, type quiz-controller in the Item name text box and click OK.
 
-4. Right-click the app folder you just created and select Add | JavaScript File.
-
-    ![Creating a new JavaScript file](./images/.png)
-    
-    _Creating a new JavaScript file_
-
-5. In the Specify Name for Item dialog box, type quiz-controller in the Item name text box and click OK.
-
-    ![Naming the new JavaScript file](./images/.png)
+    ![Naming the new JavaScript file](./images/add-javascript-controller.png)
     
     _Naming the new JavaScript file_
 
-6. In the quiz-controller.js file, add the following code to declare and initialize the AngularJS QuizCtrl controller.
+5. In the **quiz-controller.js** file, add the following code to declare and initialize the AngularJS **QuizCtrl** controller.
 
-	_(Code Snippet - AspNetWebApiSpa - Ex2 - AngularQuizController)_
+	(Code Snippet - AspNetWebApiSpa - AngularQuizController)
 	
     ````JS
     angular.module('QuizApp', [])
@@ -527,12 +563,13 @@ You will start by installing AngularJS from Visual Studio's Package Manager Cons
         });
     ````
     
-	> **Note:** The constructor function of the QuizCtrl controller expects an injectable parameter named $scope. The initial state of the scope should be set up in the constructor function by attaching properties to the $scope object. The properties contain the view model, and will be accessible to the template when the controller is registered.
+	> **Note:** The constructor function of the **QuizCtrl** controller expects an injectable parameter named **$scope**. The initial state of the scope should be set up in the constructor function by attaching properties to the **$scope** object. The properties contain the **view model**, and will be accessible to the template when the controller is registered.
 
-	The QuizCtrl controller is defined inside a module named QuizApp. Modules are units of work that let you break your application into separate components. The main advantages of using modules is that the code is easier to understand and facilitates unit testing, reusability and maintainability.
+	The **QuizCtrl** controller is defined inside a module named **QuizApp**. Modules are units of work that let you break your application into separate components. The main advantages of using modules is that the code is easier to understand and facilitates unit testing, reusability and maintainability.
 
-7. You will now add behavior to the scope in order to react to events triggered from the view. Add the following code at the end of the QuizCtrl controller to define the nextQuestion function in the `$scope` object.
+6. You will now add behavior to the scope in order to react to events triggered from the view. Add the following code at the end of the **QuizCtrl** controller to define the **nextQuestion** function in the **$scope** object.
 
+	(Code Snippet - AspNetWebApiSpa - AngularQuizControllerNextQuestion)
     ````JS
     .controller('QuizCtrl', function ($scope, $http) { 
         ...
@@ -555,12 +592,12 @@ You will start by installing AngularJS from Visual Studio's Package Manager Cons
         };
     };
     ````
-    _(Code Snippet - AspNetWebApiSpa - Ex2 - AngularQuizControllerNextQuestion)_
 
-	> **Note:** This function retrieves the next question from the Trivia Web API created in the previous exercise and attaches the question data to the $scope object.
+	> **Note:** This function retrieves the next question from the **Trivia** Web API created in the previous exercise and attaches the question data to the **$scope** object.
 
-8. Insert the following code at the end of the QuizCtrl controller to define the sendAnswer function in the $scope object.
+7. Insert the following code at the end of the **QuizCtrl** controller to define the **sendAnswer** function in the **$scope** object.
 
+	(Code Snippet - AspNetWebApiSpa - AngularQuizControllerSendAnswer)
     ````JS
     .controller('QuizCtrl', function ($scope, $http) { 
         ...
@@ -570,7 +607,7 @@ You will start by installing AngularJS from Visual Studio's Package Manager Cons
             $scope.answered = true;
 
             $http.post('/api/trivia', { 'questionId': option.questionId, 'optionId': option.id }).success(function (data, status, headers, config) {
-                $scope.correctAnswer = (data === "true");
+                $scope.correctAnswer = (Boolean(data) === true);
                 $scope.working = false;
             }).error(function (data, status, headers, config) {
                 $scope.title = "Oops... something went wrong";
@@ -579,15 +616,16 @@ You will start by installing AngularJS from Visual Studio's Package Manager Cons
         };
     };
     ````
-	_(Code Snippet - AspNetWebApiSpa - Ex2 - AngularQuizControllerSendAnswer)_
     
-	> **Note:** This function sends the answer selected by the user to the Trivia Web API and stores the result –i.e. if the answer is correct or not– in the $scope object.
+	> **Note:** This function sends the answer selected by the user to the **Trivia** Web API and stores the result –i.e. if the answer is correct or not– in the **$scope** object.
 
-	The nextQuestion and sendAnswer functions from above use the AngularJS `$http` object to abstract the communication with the Web API via the XMLHttpRequest JavaScript object from the browser. AngularJS supports another service that brings a higher level of abstraction to perform CRUD operations against a resource through RESTful APIs. The AngularJS `$resource` object has action methods which provide high-level behaviors without the need to interact with the `$http` object. Consider using the `$resource` object in scenarios that requires the CRUD model (fore information, see the `$resource` documentation).
+	The **nextQuestion** and **sendAnswer** functions from above use the AngularJS **$http** object to abstract the communication with the Web API via the XMLHttpRequest JavaScript object from the browser. AngularJS supports another service that brings a higher level of abstraction to perform CRUD operations against a resource through RESTful APIs. The AngularJS **$resource** object has action methods which provide high-level behaviors without the need to interact with the **$http** object. Consider using the **$resource** object in scenarios that requires the CRUD model (fore information, see the [$resource documentation](http://docs.angularjs.org/api/ngResource/service/$resource)).
 
-9. The next step is to create the AngularJS template that defines the view for the quiz. To do this, open the Index.cshtml file inside the Views | Home folder and replace the content with the following code.
+8. The next step is to create the AngularJS template that defines the view for the quiz. To do this, open the **Index.cshtml** file inside the **Views | Home** folder and replace the content with the following code.
 
-    ````HTML
+	(Code Snippet - AspNetWebApiSpa - GeekQuizView)
+
+	````HTML
     @{
         ViewBag.Title = "Play";
     }
@@ -620,17 +658,18 @@ You will start by installing AngularJS from Visual Studio's Package Manager Cons
         @Scripts.Render("~/Scripts/app/quiz-controller.js")
     }
     ````
-	_(Code Snippet - AspNetWebApiSpa - Ex2 - GeekQuizView)_
 
 	> **Note:** The AngularJS template is a declarative specification that uses information from the model and the controller to transform static markup into the dynamic view that the user sees in the browser. The following are examples of AngularJS elements and element attributes that can be used in a template:
-    * The ng-app directive tells AngularJS the DOM element that represents the root element of the application.
-    * The ng-controller directive attaches a controller to the DOM at the point where the directive is declared.
-    * The curly brace notation {{ }} denotes bindings to the scope properties defined in the controller.
-    * The ng-click directive is used to invoke the functions defined in the scope in response to user clicks.
+    * The **ng-app** directive tells AngularJS the DOM element that represents the root element of the application.
+    * The **ng-controller** directive attaches a controller to the DOM at the point where the directive is declared.
+    * The curly brace notation **{{ }}** denotes bindings to the scope properties defined in the controller.
+    * The **ng-click** directive is used to invoke the functions defined in the scope in response to user clicks.
     
-10. Open the Site.css file inside the Content folder and add the following highlighted styles at the end of the file to provide a look and feel for the quiz view.
+10. Open the **Site.css** file inside the **Content** folder and add the following highlighted styles at the end of the file to provide a look and feel for the quiz view.
 
-    ````CSS
+	(Code Snippet - AspNetWebApiSpa - GeekQuizStyles)
+	
+	````CSS
     .validation-summary-valid {
          display: none;
     }
@@ -673,14 +712,13 @@ You will start by installing AngularJS from Visual Studio's Package Manager Cons
     .flip-container div.front.flip, .flip-container div.back {
         display: none;
     }
-    ````
-	_(Code Snippet - AspNetWebApiSpa - Ex2 - GeekQuizStyles)_
+	````
     
 ##Running the Single Page Application
 
 In this task you will execute the solution using the new user interface you built with AngularJS to answer some of the quiz questions.
 
-1. Press F5 to run the solution.
+1. Press **F5** to run the solution.
 
 2. Register a new user account. To do this, follow the registration steps described in Exercise 1, Task 3.
 
@@ -710,21 +748,21 @@ In this task you will execute the solution using the new user interface you buil
 
 In this task you will use CSS3 properties to perform rich animations by adding a flip effect when a question is answered and when the next question is retrieved.
 
-1. In Solution Explorer, right-click the Content folder of the GeekQuiz project and select Add | Existing Item....
+1. In **Solution Explorer**, right-click the **Content** folder of the **GeekQuiz** project and select **Add | Existing Item...**.
 
-![Adding an existing item to the Content folder](./images/.png)
+    ![Adding an existing item to the Content folder](./images/add-content.png)
 
-_Adding an existing item to the Content folder_
+    _Adding an existing item to the Content folder_
 
-2. In the Add Existing Item dialog box, navigate to the Source/Assets folder and select Flip.css. Click Add.
+2. In the **Add Existing Item** dialog box, navigate to the **Source/css** folder and select **Flip.css**. Click **Add**.
 
-![Adding the Flip.css file from Assets](./images/.png)
+    ![Adding the Flip.css file from Assets](./images/add-content-dialog.png)
 
-_Adding the Flip.css file from Assets_
+    _Adding the Flip.css file from Assets_
 
-3. Open the Flip.css file you just added and inspect its content.
+3. Open the **Flip.css** file you just added and inspect its content.
 
-4. Locate the flip transformation comment. The styles below that comment use the CSS perspective and rotateY transformations to generate a "card flip" effect.
+4. Locate the **flip transformation** comment. The styles below that comment use the CSS **perspective** and **rotateY** transformations to generate a "card flip" effect.
 
     ````CSS
     /* flip transformation */
@@ -758,7 +796,7 @@ _Adding the Flip.css file from Assets_
         }
     ````
 
-5. Locate the hide back of pane during flip comment. The style below that comment hides the back-side of the faces when they are facing away from the viewer by setting the backface-visibility CSS property to hidden.
+5. Locate the **hide back of pane during flip** comment. The style below that comment hides the back-side of the faces when they are facing away from the viewer by setting the **backface-visibility** CSS property to hidden.
 
     ````CSS
     /* hide back of pane during flip */
@@ -769,7 +807,7 @@ _Adding the Flip.css file from Assets_
     }
     ````
 
-6. Open the BundleConfig.cs file inside the App_Start folder and add the reference to the Flip.css file in the "~/Content/css" style bundle
+6. Open the **BundleConfig.cs** file inside the **App_Start** folder and add the reference to the **Flip.css** file in the **"~/Content/css"** style bundle
 
     ````C#
     bundles.Add(new StyleBundle("~/Content/css").Include(
@@ -778,17 +816,17 @@ _Adding the Flip.css file from Assets_
         "~/Content/Flip.css"));
     ````
 
-7. Press F5 to run the solution and log in with your credentials.
+7. Press **F5** to run the solution and log in with your credentials.
 
 8. Answer a question by clicking one of the options. Notice the flip effect when transitioning between views.
 
-    ![Answering a question with the flip effect](./images/.png)
+    ![Answering a question with the flip effect](./images/answering-a-question-with-the-flip-effect.png)
     
     _Answering a question with the flip effect_
 
-9. Click Next Question to retrieve the following question. The flip effect should appear again.
+9. Click **Next Question** to retrieve the following question. The flip effect should appear again.
 
-    ![Retrieving the following question with the flip effect](./images/.png)
+    ![Retrieving the following question with the flip effect](./images/retriving-the-following-question-with-the-fli.png)
     
     _Retrieving the following question with the flip effect_
 

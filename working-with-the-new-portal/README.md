@@ -15,14 +15,6 @@ The new portal allows each user to transform the portal home page (called the _S
 
 * **Visual Studio Online**. Microsoft announced key enhancements through the Microsoft Azure Preview Portal. This includes Team Projects supporting greater agility for application lifecycle management and the lightweight editor code-named ?Monaco? for modifying and committing Web project code changes without leaving Azure. Also included is Application Insights, an analytics solution that collects telemetry data such as availability, performance and usage information to track an application?s health. Visual Studio integration enables developers to surface this data from new applications with a single click.
 
-This lab includes the following exercises:
-
-1. [Creating a Web Site + SQL](#Exercise1)
-1. [Setting Up Continuous Integration using Team Project](#Exercise2)
-1. [[Optional] Creating a Resource Group using Azure Resource Manager](#Exercise3)
-
-
-<a name="Exercise1" />
 ## Creating a Web Site + SQL ##
 
 Historically, managing a resource (a user-managed entity such as a database server, database or web site,) in Microsoft Azure required you to perform operations against one resource at a time. When developing for the cloud today, we are often managing _individual resources_ (databases, storage, cloud services, virtual machines, and so on). It's left up to us as cloud developers and IT professionals to piece these resources together in a meaningful way and manage them over time. The Microsoft Azure Preview portal was designed to bring together all of the individual resources of an application into a consolidated view. Resource group is a new concept in Azure that serves as the lifecycle boundary for all of its resources. 

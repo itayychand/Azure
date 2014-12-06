@@ -12,7 +12,7 @@ You will learn:
 
 You'll build a simple contact list web app that is built on ASP.NET MVC 5 and uses the ADO.NET Entity Framework for database access. The following illustration shows the login page for the completed application:
 
-![The ASP.NET MVC 5 application](Images/CMdemoapp.png?raw=true)
+![The ASP.NET MVC 5 application](images/CMdemoapp.png?raw=true)
 
 _The ASP.NET MVC 5 application_
 
@@ -42,7 +42,7 @@ Continue working with the solution created in the previous lab.
 
 1. In **Solution Explorer** open the _Layout.cshtml_ file in the _Views\Shared_ folder.
 
-	![editing-the-layout-file](Images/editing-the-layout-file.png?raw=true)
+	![editing-the-layout-file](images/editing-the-layout-file.png?raw=true)
 	
 	_Editting the **layout.cshtml** file_
 
@@ -96,7 +96,7 @@ Continue working with the solution created in the previous lab.
 
 3. Press **CTRL+F5** to run the app. The application home page appears in the default browser.
  
-	![running-the-app-locally](Images/running-the-app-locally.png?raw=true "Running the app locally")
+	![running-the-app-locally](images/running-the-app-locally.png?raw=true "Running the app locally")
 
 	_Running the app locally_
 
@@ -108,7 +108,7 @@ In this task we will go trough the process of creating a new element for our sub
 
 1. Enable SSL. In Solution Explorer, click the **ContactManager** project, then press **F4** to bring up the properties dialog. Change **SSL Enabled** to true. Copy the **SSL URL**. The SSL URL will be _https://localhost:44300/_ unless you've previously created SSL Websites.
 
-	![enabling-ssl](Images/enabling-ssl.png?raw=true)
+	![enabling-ssl](images/enabling-ssl.png?raw=true)
 	
 	_Enabling SSL_
 
@@ -118,13 +118,13 @@ In this task we will go trough the process of creating a new element for our sub
 
 4. Change the **Project Url** to use the **SSL URL** and save the page (**Control+S**).
 
-	![changing-the-project-url](Images/changing-the-project-url.png?raw=true)
+	![changing-the-project-url](images/changing-the-project-url.png?raw=true)
 
 	_Changing the project URL_
 
 5. Verify **Internet Explorer** is the browser Visual Studio launches as shown in the image below:
 
-	![browser-selector](Images/browser-selector.png?raw=true)
+	![browser-selector](images/browser-selector.png?raw=true)
 
 	_Browser selector_
 	
@@ -132,25 +132,25 @@ In this task we will go trough the process of creating a new element for our sub
 	
 6. Press **CTRL+F5** to run the application. Follow the instructions to trust the self-signed certificate that IIS Express has generated.
  
-	![trusting-the-self-signed-certificate](Images/trusting-the-self-signed-certificate.png?raw=true)
+	![trusting-the-self-signed-certificate](images/trusting-the-self-signed-certificate.png?raw=true)
 	
 	_Trusting the self-signed certificate_
 
 7. Read the **Security Warning** dialog and then click **Yes** if you want to install the certificate representing **localhost**.
 
-	![installing-certificate-security-warning](Images/installing-certificate-security-warning.png?raw=true)
+	![installing-certificate-security-warning](images/installing-certificate-security-warning.png?raw=true)
 
 	_Installing SSL Certificate warning_
  
 8. IE shows the _Home_ page and there are no SSL warnings.
  
-	![app-running-without-ssl-warnings](Images/app-running-without-ssl-warnings.png?raw=true)
+	![app-running-without-ssl-warnings](images/app-running-without-ssl-warnings.png?raw=true)
 	
 	_Application running without security warnings_
 
 	Google Chrome also accepts the certificate and will show HTTPS content without a warning. Firefox uses its own certificate store, so it will display a warning.
  
-	![firefox-ssl-security-warning](Images/firefox-ssl-security-warning.png?raw=true)
+	![firefox-ssl-security-warning](images/firefox-ssl-security-warning.png?raw=true)
 	
 	_Firefox SSL security warning_
 	
@@ -159,7 +159,7 @@ In this task we will go trough the process of creating a new element for our sub
 
 1. In Visual Studio, right-click the project in **Solution Explorer** and select **Publish** from the context menu.
  
-	![Publish in project context menu](Images/publishing-in-project-context-menu.png?raw=true)
+	![Publish in project context menu](images/publishing-in-project-context-menu.png?raw=true)
 	
 	_Publish in project context menu_
 	
@@ -167,13 +167,13 @@ In this task we will go trough the process of creating a new element for our sub
 	
 2. In the **Publish Web** dialog box, click **Publish**.
 
-	![Publish](Images/publishing-the-application.png?raw=true)
+	![Publish](images/publishing-the-application.png?raw=true)
 	
 	_Publishing the application_
 
 	The application you created is now running in the cloud. The next time you deploy the application, only the changed (or new) files will be deployed.
  
-	![The application running in Cloud](Images/the-application-running-in-the-cloud.PNG)
+	![The application running in Cloud](images/the-application-running-in-the-cloud.png)
 	
 	_The application running in the cloud_
 
@@ -188,13 +188,13 @@ You begin by creating a simple data model in code.
 
 1. In **Solution Explorer**, right-click the Models folder, click **Add**, and then **Class**.
 
-	![Add Class in Models folder context menu](Images/adding-a-new-class.png)
+	![Add Class in Models folder context menu](images/adding-a-new-class.png)
 	
 	_Add Class in Models folder context menu_
 
 2. In the **Add New Item** dialog box, name the new class file *Contact.cs*, and then click **Add**.
 
-	![Add New Item dialog box](Images/adding-new-data-model-class.png)
+	![Add New Item dialog box](images/adding-new-data-model-class.png)
 	
 	_Adding a new data model class_
 
@@ -229,13 +229,13 @@ The **Contacts** class defines the data that you will store for each contact, pl
 1. Build the project **(Ctrl+Shift+B)**. (You must build the project before using the scaffolding mechanism.) 
 2. In **Solution Explorer**, right-click the Controllers folder and click **Add**, and then click **Controller**.
 
-	![Add Controller in Controllers folder context menu](Images/adding-controller-context-menu.png)
+	![Add Controller in Controllers folder context menu](images/adding-controller-context-menu.png)
 	
 	_Adding a controller in the Controllers folder_
 
 3. In the **Add Scaffold** dialog box, select **MVC 5 Controller with views, using EF** and then click **Add**.
 	
-	![Add Scaffold dlg](Images/add-scaffold-controller.png)
+	![Add Scaffold dlg](images/add-scaffold-controller.png)
 
 	_Adding a controller using scaffolding_
 
@@ -243,7 +243,7 @@ The **Contacts** class defines the data that you will store for each contact, pl
 5. In the **Data context class**, select **ApplicationDbContext (ContactManager.Models)**. The **ApplicationDbContext** will be used for both the membership DB and our contact data.
 6. In the **Controller name** text entry box, enter "CmController" for the controller name. 
 
-	![New data ctx dlg](Images/add-controller-dialog.PNG)
+	![New data ctx dlg](images/add-controller-dialog.PNG)
 	
 	_Add Controller dialog_
 
@@ -258,7 +258,7 @@ The next task is to enable the [Code First Migrations](http://msdn.microsoft.com
 
 1. In the **Tools** menu, select **NuGet Package Manager** and then **Package Manager Console**.
 
-	![Package Manager Console in Tools menu](Images/opening-package-manager-console.png)
+	![Package Manager Console in Tools menu](images/opening-package-manager-console.png)
 	
 	_Opening the Package Manager Console_
 
@@ -345,7 +345,7 @@ The next task is to enable the [Code First Migrations](http://msdn.microsoft.com
 
 		update-database
 
-	![Package Manager Console commands](Images/pmc-update-database-command.png)
+	![Package Manager Console commands](images/pmc-update-database-command.png)
 	
 	_Update databese command_
 
@@ -355,7 +355,7 @@ The next task is to enable the [Code First Migrations](http://msdn.microsoft.com
 
 	The application shows the seed data and provides edit, details and delete links. You can create, edit, delete and view data.
 
-	![MVC view of data](Images/mvc-view-of-data.png)
+	![MVC view of data](images/mvc-view-of-data.png)
 	
 	_MVC view of data_
 
@@ -419,7 +419,7 @@ In this section you will add a local user and the *canEdit* role to the membersh
 	
 	The following images shows the changes to *Seed* method:
 
-	![code image](Images/updated-seed-method.PNG)
+	![code image](images/updated-seed-method.png)
 	
 	_The updated **Seed** method_
 
@@ -439,7 +439,7 @@ In this section you will temporarily modify the **ExternalLoginConfirmation** me
 
    The code above adds the newly registered user to the "canEdit" role, which gives them access to action methods that change (edit) data. An image of the code change is shown below:
 
-   ![code](Images/adding-user-to-canedit-role.png)
+   ![code](images/adding-user-to-canedit-role.png)
    
    _Adding user to canEdit Role_
 
@@ -476,7 +476,7 @@ In this section you will apply the [Authorize](http://msdn.microsoft.com/en-us/l
 
 2. Add the [AllowAnonymous](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx) attribute to the **Index** method of the Home controller. The [AllowAnonymous](http://blogs.msdn.com/b/rickandy/archive/2012/03/23/securing-your-asp-net-mvc-4-app-and-the-new-allowanonymous-attribute.aspx) attribute enables you to white-list the methods you want to opt out of authorization. An image of a portion of the HomeController is shown below:	
 
-  	![The Allowanonymous attribute](Images/allow-anonymous-attribute.PNG)
+  	![The Allowanonymous attribute](images/allow-anonymous-attribute.png)
 	
 	_The AllowAnonymous attribute_
 
@@ -484,7 +484,7 @@ In this section you will apply the [Authorize](http://msdn.microsoft.com/en-us/l
 
 4. In *CmController.cs*, add `[Authorize(Roles = "canEdit")]` to the HttpGet and HttpPost methods that change data (Create, Edit, Delete, every action method except Index and Details) in the *Cm* controller. A portion of the completed code is shown below: 
 
-   	![The Authorize attribute](Images/authorize-attribute.png)
+   	![The Authorize attribute](images/authorize-attribute.png)
 	
 	_The Authorize attribute_
 
@@ -492,7 +492,7 @@ In this section you will apply the [Authorize](http://msdn.microsoft.com/en-us/l
 6. Click on the **About** or **Contact** links. You will be redirected to the log in page because anonymous users cannot view those pages. 
 7. Click the **Register as a new user** link and add a local user with email *joe@contoso.com*. Verify *Joe* can view the Home, About and Contact pages. 
 
-	![The Register page](Images/register-page.PNG)
+	![The Register page](images/register-page.png)
 	
 	_The Register page_
 
@@ -511,7 +511,7 @@ In this section you will apply the [Authorize](http://msdn.microsoft.com/en-us/l
 
 1. In Visual Studio, right-click the project in **Solution Explorer** and select **Publish** from the context menu.
 
-	![Opening the Publish Web wizard](Images/openining-publish-web-wizard.png)
+	![Opening the Publish Web wizard](images/openining-publish-web-wizard.png)
 	
 	_Opening the Publish Web wizard_
 
@@ -519,12 +519,13 @@ In this section you will apply the [Authorize](http://msdn.microsoft.com/en-us/l
 
 2. Click the **Settings** tab on the left side of the **Publish Web** dialog box. Click the **v** icon to select the **Remote connection string** for **ApplicationDbContext** and select the  **ContactManagerNN_db**.
 
-	![settings](Images/publish-web-settings.png)
+	![settings](images/publish-web-settings.png)
+	
 	_Publish Web Settings_
 
 3. Under **ContactManagerContext**, select **Execute Code First Migrations**.
 
-	![settings](Images/enabling-execute-code-first-migrations.png)
+	![settings](images/enabling-execute-code-first-migrations.png)
 	
 	_Excecuting Code-first migrations_
 
@@ -543,13 +544,13 @@ In this section you will apply the [Authorize](http://msdn.microsoft.com/en-us/l
 1. In **Server Explorer**, navigate to **Websites**.
 2. Right click on each Website instance and select **Stop Website**. 
 
-	![Stopping the Website](Images/stopping-the-website.png)
+	![Stopping the Website](images/stopping-the-website.png)
 	
 	_Stopping the Website_
 
 	Alternatively, from the Azure management portal, you can select the website, then click the **stop** icon at the bottom of the page.
 
-	![Stopping the Website from Azure](Images/stopping-the-website-from-azure.png)
+	![Stopping the Website from Azure](images/stopping-the-website-from-azure.png)
 	
 	_Stopping the Website from Azure_
 
@@ -564,14 +565,14 @@ In this section you will apply the [Authorize](http://msdn.microsoft.com/en-us/l
 2. Build the project (which saves the file changes and verify you don't have any compile errors).
 3. Right-click the project in **Solution Explorer** and select **Publish**.
 
-	![Publish in project context menu](Images/app-publishing.png)
+	![Publish in project context menu](images/app-publishing.png)
   
 	_Publish in project context menu_
 	
 4. Click the **Start Preview** button. Only the files that need to be updated are deployed.
 5. Start the website from Visual Studio or from the Portal. **You won't be able to publish while the website is stopped**.
 
-	![Starting the Website](Images/starting-the-website.png)
+	![Starting the Website](images/starting-the-website.png)
 	
 	_Starting the Website_
 
@@ -580,19 +581,19 @@ In this section you will apply the [Authorize](http://msdn.microsoft.com/en-us/l
 8. Click the **About** link. You'll be redirected to the Log in page.
 9. Click the **Register** link on the Log in page and create local account. We will use this local account to verify you can access the read only pages but you cannot access pages that change data (which are protected by the *canEdit* role). Later on in the tutorial we will remove local account access. 
 
-	![Registering an account](Images/registering-an-account.PNG)
+	![Registering an account](images/registering-an-account.png)
 	
 	_Registering an account_
 
 10. Verify you can navigate to the *About* and *Contact* pages.
 
-	![The about page](Images/about-page.PNG)
+	![The about page](images/about-page.png)
 	
 	_The about page_
 
 11. Click the **CM Demo** link to navigate to the **Cm** controller. Alternatively, you can append *Cm* to the URL. 
 
-	![The CM page](Images/cm-page.png)
+	![The CM page](images/cm-page.png)
 	
 	_The CM page_
  
@@ -609,7 +610,7 @@ In this section you will apply the [Authorize](http://msdn.microsoft.com/en-us/l
 1. In **Server Explorer**, navigate to the **ContactDB**.
 2. Right-click **ContactDB** and select **Open in SQL Server Object Explorer**.
  
-	![Opening in SQL Server Object Explorer](Images/opening-in-sql-server-object-explorer.png)
+	![Opening in SQL Server Object Explorer](images/opening-in-sql-server-object-explorer.png)
 	
 	_Opening in SQL Server Object Explorer_
  
@@ -617,19 +618,19 @@ In this section you will apply the [Authorize](http://msdn.microsoft.com/en-us/l
 
 3. Right click on the **AspNetUsers** table and select **View Data**.
 
-	![Viewing table data](Images/viewing-table-data.png)
+	![Viewing table data](images/viewing-table-data.png)
 	
 	_Viewing table data_
  
 4. Note the Id from the Google account you registered with to be in the **canEdit** role, and the Id of *user1@contoso.com*. These should be the only users in the **canEdit** role. (You'll verify that in the next step.)
 
-	![AspNetUsers table](Images/AspNetUsers-table.png)
+	![AspNetUsers table](images/AspNetUsers-table.png)
 	
 	_AspNetUsers table_
  
 5. In **SQL Server Object Explorer**, right click on **AspNetUserRoles** and select **View Data**.
 
-	![AspNetUserRoles table](Images/AspNetUserRoles-table.png)
+	![AspNetUserRoles table](images/AspNetUserRoles-table.png)
 	
 	_AspNetUserRoles table_
  
@@ -640,7 +641,7 @@ Verify the **UserId**s are from *user1@contoso.com* and the Google account you r
 
 Follow the steps in this section if you can't connect to SQL Azure from Visual Studio or if you get an error dialog stating "Cannot open server".
 
-![Firewall error](Images/cannot-open-server-dialog.png)
+![Firewall error](images/cannot-open-server-dialog.png)
 
 _Cannot Open Server - firewall error_
 
@@ -648,7 +649,7 @@ You will need to add your IP address to the allowed IPs.
 
 1. In the Azure Portal, Select **SQL Databases** in the left tab.
 
-	![Azure SQL Databases](Images/azure-sql-databases.png)
+	![Azure SQL Databases](images/azure-sql-databases.png)
 	
 	_SQL Databases in Azure Portal_
 
@@ -656,7 +657,7 @@ You will need to add your IP address to the allowed IPs.
 
 3. Click the **Set up Azure firewall rules for this IP address** link.
 
-	![firewall rules](Images/setting-up-firewall-rules.png)
+	![firewall rules](images/setting-up-firewall-rules.png)
 	
 	_Setting up firewall rules_
 
@@ -667,7 +668,7 @@ You will need to add your IP address to the allowed IPs.
 5. In the Azure Portal, Click **SQL Databases**.
 6. Select the **Servers** tab, and then click on the server you wish to configure.
 
-	![Selecting the Server to Set up firewall rules](Images/selecting-the-server-to-set-up.PNG)
+	![Selecting the Server to Set up firewall rules](images/selecting-the-server-to-set-up.png)
 	
 	_Selecting the Server to Set up firewall rules_
 
@@ -675,7 +676,7 @@ You will need to add your IP address to the allowed IPs.
 
 8. Add a rule name, starting and ending IP addresses.
 
-	![Adding the allowed IP addresses](Images/adding-allowed-ip-addresses.png)
+	![Adding the allowed IP addresses](images/adding-allowed-ip-addresses.png)
 	
 	_Adding the allowed IP addresses_
 
@@ -691,13 +692,13 @@ You will need to add your IP address to the allowed IPs.
 15. Select the **ContactDB**, and then click **View SQL Database connection strings**.
 16. From the **Connection Strings** page, copy the **Server**  and **User ID**.
  
-	![Connection String](Images/connection-string.PNG)
+	![Connection String](images/connection-string.png)
 	
 	_Connection String_
 
 17. Past the **Server** and **User ID** values into the **Connect to Server** dialog in Visual Studio. The **User ID** value goes into the **Login** entry. Enter the password you used to create the SQL DB.
 
-	![Connecting to the Database](Images/connecting-to-the-db.png)
+	![Connecting to the Database](images/connecting-to-the-db.png)
 	
 	_Connecting to the Database_
 
@@ -710,13 +711,13 @@ Earlier in the lab you used code to add users to the **canEdit** role. An altern
 
 2. In **SQL Server Object Explorer**, right click on **AspNetUserRoles** and select **View Data**.
 
-	![AspNetUserRoles table](Images/AspNetUserRoles-table.png)
+	![AspNetUserRoles table](images/AspNetUserRoles-table.png)
 	
 	_AspNetUserRoles table_
 
 1. Copy the *RoleId* and paste it into the empty (new) row.
 	
-	![_Adding a new user to the AspNetUserRoles table](Images/adding-a-new-user-to-the-aspnetuserroles-table.png)
+	![_Adding a new user to the AspNetUserRoles table](images/adding-a-new-user-to-the-aspnetuserroles-table.png)
 	
 	_Adding a new user to the AspNetUserRoles table_
 	

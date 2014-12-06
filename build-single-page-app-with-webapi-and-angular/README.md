@@ -1,4 +1,4 @@
-﻿Build a Single Page Application (SPA) with ASP.NET Web API and Angular.js
+﻿Build a Single Page Application (SPA) with ASP.NET Web API and Angular.js using Azure Active Directory to log in users
 =======================================================================================
 
 In traditional web applications, the client (browser) initiates the communication with the server by requesting a page. The server then processes the request and sends the HTML of the page to the client. In subsequent interactions with the page –e.g. the user navigates to a link or submits a form with data– a new request is sent to the server, and the flow starts again: the server processes the request and sends a new page to the browser in response to the new action requested by the client.
@@ -24,7 +24,17 @@ This lab includes the following tasks:
 Microsoft ASP.NET tools for Windows Azure Active Directory makes it simple to enable authentication for web applications hosted on [Windows Azure Web Sites](http://www.windowsazure.com/en-us/home/features/web-sites/). You can use Windows Azure Authentication to authenticate Office 365 users from your organization, corporate accounts synced from your on-premise Active Directory or users created in your own custom Windows Azure Active Directory domain. Enabling Windows Azure Authentication configures your application to authenticate users using a single [Windows Azure Active Directory](http://www.windowsazure.com/en-us/home/features/identity/) tenant.
 
 1. Sign in to the [Azure Management Portal](https://manage.windowsazure.com/).
-2. All Azure accounts contain a **Default Directory** -- click on it, then click  the **Users** tab at the top of the page (see image below).
+2. Most Azure accounts contain a **Default Directory** -- click on it, then click  the **Users** tab at the top of the page (see image below).
+
+	> **Note:** If your suscription does not have the **Default Directory** or you want to create one, click the **NEW** button, select **App Services**, **Active Directory**, **Directory**, and click **Custom Create**. This is shown in the following image.
+	
+	>![Add User dialog 2](./images/CreatingCustomDirectory.png)
+	
+	> In the **Add directory** dialog, enter a name for your directory, a country or region, and a unique domain name. Finally, click the check mark button to create the directory.
+	
+	>![Add User dialog 2](./images/AddDirectoryDialog.png)
+
+
 3. Click Add User.
 
 	![Adding an Active Directory User](./images/addingUser.png)
@@ -294,8 +304,6 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 
 7. The **TriviaController.cs** file is then added to the **Controllers** folder of the **GeekQuiz** project, containing an empty **TriviaController** class. Add the following using statements at the beginning of the file.
 
-	(Code Snippet - AspNetWebApiSpa - TriviaControllerUsings)
-	
     ````C#
     using System.Data.Entity;
     using System.Threading;
@@ -307,8 +315,6 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 
 8. Add the following code at the beginning of the **TriviaController** class to define, initialize and dispose the **TriviaContext** instance in the controller.
 
-	(Code Snippet - AspNetWebApiSpa - TriviaControllerContext)
-	
     <!-- mark:3-13 -->
     ````C#
     public class TriviaController : ApiController
@@ -330,9 +336,7 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 	> **Note:** The **Dispose** method of **TriviaController** invokes the **Dispose** method of the **TriviaContext** instance, which ensures that all the resources used by the context object are released when the TriviaContext instance is disposed or garbage-collected. This includes closing all database connections opened by Entity Framework.
 
 9. Add the following helper method at the end of the **TriviaController** class. This method retrieves the following quiz question from the database to be answered by the specified user.
-
-    (Code Snippet - AspNetWebApiSpa - TriviaControllerNextQuestion)
-    
+ 
     ````C#
     private async Task<TriviaQuestion> NextQuestionAsync(string userId)
     {
@@ -352,8 +356,6 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
     ````
 
 10. Add the following **Get** action method to the **TriviaController** class. This action method calls the **NextQuestionAsync** helper method defined in the previous step to retrieve the next question for the authenticated user.
-
-	(Code Snippet - AspNetWebApiSpa - TriviaControllerGetAction)
 	
     ````C#
     // GET api/Trivia
@@ -375,8 +377,6 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 
 11. Add the following helper method at the end of the **TriviaController** class. This method stores the specified answer in the database and returns a Boolean value indicating whether or not the answer is correct.
 
-	(Code Snippet - AspNetWebApiSpa - TriviaControllerStoreAsync)
-	
     ````C#
     private async Task<bool> StoreAsync(TriviaAnswer answer)
     {
@@ -392,8 +392,6 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
 
 12. Add the following **Post** action method to the **TriviaController** class. This action method associates the answer to the authenticated user and calls the **StoreAsync** helper method. Then, it sends a response with the Boolean value returned by the helper method.
 
-	(Code Snippet - AspNetWebApiSpa - TriviaControllerPostAction)
-	
     ````C#
     // POST api/Trivia
     [ResponseType(typeof(TriviaAnswer))]
@@ -434,7 +432,7 @@ _Internet Explorer option_
 
 1. Press **F5** to run the solution. The Log in page should appear in the browser.
 
-    > **Note:** When the application starts, the default MVC route is triggered, which by default is mapped to the Index action of the HomeController class. Since HomeController is restricted to authenticated users (remember that you decorated that class with the Authorize attribute in Exercise 1) and there is no user authenticated yet, the application redirects the original request to the log in page.
+    > **Note:** When the application starts, the default MVC route is triggered, which by default is mapped to the Index action of the HomeController class. Since HomeController is restricted to authenticated users (remember that you decorated that class with the Authorize attribute previously) and there is no user authenticated yet, the application redirects the original request to the log in page.
 
 2. Enter the Active Directory credentials.
 
@@ -538,7 +536,7 @@ You will start by installing AngularJS from Visual Studio's Package Manager Cons
     
     _Adding a new JavaScript file_
 
-4. In the Specify Name for Item dialog box, type quiz-controller in the Item name text box and click OK.
+4. In the Specify Name for Item dialog box, type _quiz-controller_ in the Item name text box and click OK.
 
     ![Naming the new JavaScript file](./images/add-javascript-controller.png)
     
@@ -546,8 +544,6 @@ You will start by installing AngularJS from Visual Studio's Package Manager Cons
 
 5. In the **quiz-controller.js** file, add the following code to declare and initialize the AngularJS **QuizCtrl** controller.
 
-	(Code Snippet - AspNetWebApiSpa - AngularQuizController)
-	
     ````JS
     angular.module('QuizApp', [])
         .controller('QuizCtrl', function ($scope, $http) {
@@ -569,7 +565,6 @@ You will start by installing AngularJS from Visual Studio's Package Manager Cons
 
 6. You will now add behavior to the scope in order to react to events triggered from the view. Add the following code at the end of the **QuizCtrl** controller to define the **nextQuestion** function in the **$scope** object.
 
-	(Code Snippet - AspNetWebApiSpa - AngularQuizControllerNextQuestion)
     ````JS
     .controller('QuizCtrl', function ($scope, $http) { 
         ...
@@ -593,11 +588,10 @@ You will start by installing AngularJS from Visual Studio's Package Manager Cons
     };
     ````
 
-	> **Note:** This function retrieves the next question from the **Trivia** Web API created in the previous exercise and attaches the question data to the **$scope** object.
+	> **Note:** This function retrieves the next question from the **Trivia** Web API created in the previous task and attaches the question data to the **$scope** object.
 
 7. Insert the following code at the end of the **QuizCtrl** controller to define the **sendAnswer** function in the **$scope** object.
 
-	(Code Snippet - AspNetWebApiSpa - AngularQuizControllerSendAnswer)
     ````JS
     .controller('QuizCtrl', function ($scope, $http) { 
         ...
@@ -622,8 +616,6 @@ You will start by installing AngularJS from Visual Studio's Package Manager Cons
 	The **nextQuestion** and **sendAnswer** functions from above use the AngularJS **$http** object to abstract the communication with the Web API via the XMLHttpRequest JavaScript object from the browser. AngularJS supports another service that brings a higher level of abstraction to perform CRUD operations against a resource through RESTful APIs. The AngularJS **$resource** object has action methods which provide high-level behaviors without the need to interact with the **$http** object. Consider using the **$resource** object in scenarios that requires the CRUD model (fore information, see the [$resource documentation](http://docs.angularjs.org/api/ngResource/service/$resource)).
 
 8. The next step is to create the AngularJS template that defines the view for the quiz. To do this, open the **Index.cshtml** file inside the **Views | Home** folder and replace the content with the following code.
-
-	(Code Snippet - AspNetWebApiSpa - GeekQuizView)
 
 	````HTML
     @{
@@ -667,8 +659,6 @@ You will start by installing AngularJS from Visual Studio's Package Manager Cons
     
 10. Open the **Site.css** file inside the **Content** folder and add the following highlighted styles at the end of the file to provide a look and feel for the quiz view.
 
-	(Code Snippet - AspNetWebApiSpa - GeekQuizStyles)
-	
 	````CSS
     .validation-summary-valid {
          display: none;
@@ -720,25 +710,23 @@ In this task you will execute the solution using the new user interface you buil
 
 1. Press **F5** to run the solution.
 
-2. Register a new user account. To do this, follow the registration steps described in Exercise 1, Task 3.
-
-	> **Note:** If you are using the solution from the previous exercise, you can log in with the user account you created before.
+2. Enter your Active Directory credentials to log in.
 
 3. The Home page should appear, showing the first question of the quiz. Answer the question by clicking one of the options. This will trigger the sendAnswer function defined earlier, which sends the selected option to the Trivia Web API.
 
-    ![Answering a question](./images/.png)
+    ![Answering a question](./images/AnsweringQuestion.png)
     
     _Answering a question_
 
 4. After clicking one of the buttons, the answer should appear. Click Next Question to show the following question. This will trigger the nextQuestion function defined in the controller.
 
-    ![Requesting the next question](./images/.png)
+    ![Requesting the next question](./images/RequestingNextQuestion.png)
     
     _Requesting the next question_
 
 5. The next question should appear. Continue answering questions as many times as you want. After completing all the questions you should return to the first question.
 
-    ![Next question](./images/.png)
+    ![Next question](./images/NextQuestion.png)
     
     _Next question_
 
@@ -834,7 +822,9 @@ In this task you will use CSS3 properties to perform rich animations by adding a
 
 By completing this lab you have learned how to:
 
+* Create a Global Account Administrator user in Azure Active Directory
 * Create an ASP.NET Web API controller using ASP.NET Scaffolding
+* The Graph API works
 * Implement a Web API Get action to retrieve the next quiz question
 * Implement a Web API Post action to store the quiz answers
 * Install AngularJS from the Visual Studio Package Manager Console

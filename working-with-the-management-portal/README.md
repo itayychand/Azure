@@ -3,11 +3,11 @@
 
 The Azure Management Portal is your one-stop-shop for creating and managing new cloud resources, like websites, virtual machines, and storage accounts. Once you get started, the portal will be your home to configure, monitor, and scale your resources with ease and agility.
 
-This lab includes the following exercises:
+This lab includes the following tasks:
 
-1. [Portal Overview](#Exercise1)
-1. [Creating new elements](#Exercise2)
-1. [Managing Existing elements](#Exercise3)
+1. [Portal Overview](#Task1)
+1. [Creating new elements](#Task2)
+1. [Managing Existing elements](#Task3)
 
 In this lab, you will learn how to:
 
@@ -15,7 +15,7 @@ In this lab, you will learn how to:
 - Create new elements and services
 - Manage allocated resources
 
-<a name="Exercise1" />
+<a name="Task1" />
 ##Portal Overview
 
 In this task we will walk through the different pieces of the Azure Management Portal.
@@ -33,13 +33,13 @@ In this task we will walk through the different pieces of the Azure Management P
 
 	_Left Sidebar_
 
-4. Look at the portal's footer and notice the **NEW** button on the left and the Help button on the right. We will see more about these two items as we move on to the other exercises.
+4. Look at the portal's footer and notice the **NEW** button on the left and the Help button on the right. We will see more about these two items as we move on to the other tasks.
 
 	![New Button](images/portal-new-button.png?raw=true)
 
 	_NEW Button_
 
-<a name="Exercise2" />
+<a name="Task2" />
 ##Creating new elements and services
 In this task we will go trough the process of creating a new element for our subscription. In particular, we will create a new website using the **Create Wizard**.
 
@@ -63,7 +63,7 @@ In this task we will go trough the process of creating a new element for our sub
 	![Website Creation Options](images/create-flow.png?raw=true)
 	_Website Creation Options_
 
-4. Click **QUICK CREATE**. The creation form is presented. Here you will select the URL for your website and the region where you would like to deploy. It is recommended to select the region which is closest to your audience; for this exercise leave the field as is.
+4. Click **QUICK CREATE**. The creation form is presented. Here you will select the URL for your website and the region where you would like to deploy. It is recommended to select the region which is closest to your audience; for this task leave the field as is.
 
 5. Enter the **URL** for your website, and click **CREATE WEBSITE**.
 
@@ -86,7 +86,7 @@ In this task we will go trough the process of creating a new element for our sub
 
 	_Browsing the Website_
 	
-<a name="Exercise3" />
+<a name="Task3" />
 ##Managing allocated resources
 In this task you will go through the available options for managing the recently created website.
 
@@ -118,7 +118,7 @@ In this task you will go through the available options for managing the recently
     - Linked Resources
     - Backups
 
-	The rest of the exercise will describe the more important ones.
+	The rest of the task will describe the more important ones.
   
 	> **Note**: For more information about all these options, see [Manage websites through the Azure Management Portal](http://azure.microsoft.com/en-us/documentation/articles/web-sites-manage/).
     

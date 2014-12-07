@@ -44,13 +44,13 @@ In this task you will create the web application that is going to be used trough
 6. The configuration wizard will suggest a unique name based on *ContactManager* (see the image below). Select a region near you. You can use [azurespeed.com](http://www.azurespeed.com/ "AzureSpeed.com") to find the lowest latency data center.
 7. If you haven't created a database server before, select **Create new server**, enter a database user name and password.
 
-	![Configure Azure Website](./images/configure-Azure-1.png)
-	
+	![Configure Azure Website](./images/configure-Azure-1.PNG)
+
     _Configure Azure Website_
 
 	If you have a database server, use that to create a new database. Database servers are a precious resource, and you generally want to create multiple databases on the same server for testing and development rather than creating a database server per database. Make sure your web site and database are in the same region.
 
-	![Configure Azure Website](./images/configure-Azure-2.png)
+	![Configure Azure Website](./images/configure-Azure-2.PNG)
 	
     _Configure Azure Website_
 

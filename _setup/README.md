@@ -8,12 +8,12 @@ Configure your computer
 ### Install Visual Studio Update 3
 To run these Introduction to Microsoft Azure labs, [Visual Studio 2013 Update 3](http://www.microsoft.com/en-us/download/details.aspx?id=43721) (or later)  is required.
 
+> **Note:** While not required to complete this lab, the [Web Essentials](http://vswebessentials.com/download) extension for Visual Studio improves the HTML and JavaScript editing experience by adding in features like missing Angular attribute detection and improved JavaScript IntelliSense.
+
 ### Install Azure SDK for Visual Studio 2013
 In order to build Microsoft Azure applications set up your development environment by installing the [Azure SDK for Visual Studio 2013](http://go.microsoft.com/fwlink/?linkid=324322&clcid=0x409).
 
 > **Note:** Depending on how many of the SDK dependencies you already have on your machine, installing the SDK could take a long time, from several minutes to a half hour or more.
-
-> **Note:** While not required to complete this lab, the [Web Essentials](http://vswebessentials.com/download) extension for Visual Studio improves the HTML and JavaScript editing experience by adding in features like missing Angular attribute detection and improved JavaScript IntelliSense.
 
 ### Clone or download content of this GitHub repository (optional but recommended)
 

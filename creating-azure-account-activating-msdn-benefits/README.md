@@ -61,7 +61,7 @@ If you happen to be an MSDN subscriber you can activate your Azure MSDN benefits
 2. Scroll down to see the full list of benefits you will get for being a MSDN member.There is even a FAQ section you can read.
 3. Click the **Activate** button to activate the benefits.
 
-	![Activate Azure Benefits site](images/AzureBenefits.png?raw=true)
+	![Activate Azure Benefits site](images/AzureBenefits.PNG)
 	_Activate Azure Benefits site_
 	
 4. You will need to enter your Microsoft account credentials to verify the subscription and complete the activation steps.

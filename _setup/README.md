@@ -13,6 +13,7 @@ In order to build Microsoft Azure applications set up your development environme
 
 > **Note:** Depending on how many of the SDK dependencies you already have on your machine, installing the SDK could take a long time, from several minutes to a half hour or more.
 
+> **Note:** While not required to complete this lab, the [Web Essentials](http://vswebessentials.com/download) extension for Visual Studio improves the HTML and JavaScript editing experience by adding in features like missing Angular attribute detection and improved JavaScript IntelliSense.
 
 ### Clone or download content of this GitHub repository (optional but recommended)
 

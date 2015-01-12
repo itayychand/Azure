@@ -1,9 +1,9 @@
 ﻿Introduction to the Azure Preview Portal
 =============================================
 
-The new Azure Preview portal is an all-in-one, work-anywhere experience. Now you can manage websites, databases, and Visual Studio Online team projects in a reimagined UX personalized to your work style. It was built from the ground up to put your _applications_ at the center of the experience. 
+The new Azure Preview portal is an all-in-one, work-anywhere experience. Now you can manage websites, databases and Visual Studio Online team projects in a reimagined UX personalized to your work style. It was built from the ground up to put your _applications_ at the center of the experience. 
 
-This unified hub radically simplifies building, deploying, and managing your cloud resources. Imagine a single easy-to-use console built just for you —your team, your projects. It brings together all of the cloud resources, team members, and lifecycle stages of your application and provides you with a centralized place to plan, develop, test, provision, deploy, scale, and monitor those applications. This approach can help teams embrace a DevOps culture by bringing both development and operations capabilities and perspectives together in a meaningful way.
+This unified hub radically simplifies building, deploying, and managing your cloud resources. Imagine a single easy-to-use console built just for you, your team, your projects. It brings together all of the cloud resources, team members, and lifecycle stages of your application and provides you with a centralized place to plan, develop, test, provision, deploy, scale, and monitor those applications. This approach can help teams embrace a DevOps culture by bringing both development and operations capabilities and perspectives together in a meaningful way.
 
 The new portal allows each user to transform the portal home page (called the _Startboard_) into their own customized dashboard. Stay on top of the things that matter most by pinning them to your **Startboard**. Resize parts to show more or less data. Drill in for all the details. And see insights (and opportunities) across apps and resources. New components include the following:
 
@@ -13,11 +13,11 @@ The new portal allows each user to transform the portal home page (called the _S
 
 * **Gallery**. A rich gallery of application and services from Microsoft and the open source community, this integrated marketplace of free and paid services enables customers to leverage the ecosystem to be more agile and productive.
 
-* **Visual Studio Online**. Microsoft announced key enhancements through the Microsoft Azure Preview Portal. This includes Team Projects supporting greater agility for application lifecycle management and the lightweight editor code-named ?Monaco? for modifying and committing Web project code changes without leaving Azure. Also included is Application Insights, an analytics solution that collects telemetry data such as availability, performance and usage information to track an application?s health. Visual Studio integration enables developers to surface this data from new applications with a single click.
+* **Visual Studio Online**. Microsoft announced key enhancements through the Microsoft Azure Preview Portal. This includes Team Projects supporting greater agility for application lifecycle management and the lightweight editor code-named "Monaco" for modifying and committing Web project code changes without leaving Azure. Also included is Application Insights, an analytics solution that collects telemetry data such as availability, performance and usage information to track an application's health. Visual Studio integration enables developers to surface this data from new applications with a single click.
 
 ## Creating a Web Site + SQL ##
 
-Historically, managing a resource (a user-managed entity such as a database server, database or web site,) in Microsoft Azure required you to perform operations against one resource at a time. When developing for the cloud today, we are often managing _individual resources_ (databases, storage, cloud services, virtual machines, and so on). It's left up to us as cloud developers and IT professionals to piece these resources together in a meaningful way and manage them over time. The Microsoft Azure Preview portal was designed to bring together all of the individual resources of an application into a consolidated view. Resource group is a new concept in Azure that serves as the lifecycle boundary for all of its resources. 
+Historically, managing a resource (a user-managed entity such as a database server, database or web site) in Microsoft Azure required you to perform operations against one resource at a time. When developing for the cloud today, we are often managing _individual resources_ (databases, storage, cloud services, virtual machines, and so on). It is left up to us, as cloud developers and IT professionals, to piece these resources together in a meaningful way and manage them over time. The Microsoft Azure Preview portal was designed to bring together all of the individual resources of an application into a consolidated view. Resource group is a new concept in Azure that serves as the lifecycle boundary for all of its resources. 
 
 In this task, you will learn about the preview portal and how to create a new Web Site and a SQL Server using it.
 
@@ -25,7 +25,7 @@ In this task, you will learn about the preview portal and how to create a new We
 
 2. The first thing you will see is the **Startboard**. This is your home page, where you can see dynamic data from your resources and all the details you care about. You can customize it as you see fit.
 
-	> **Note:** You can right-click on the tiles of the Startboard to customize it. You can pin or unpin tiles and change their size.
+	> **Note:** You can right-click the tiles of the Startboard to customize it. You can pin or unpin tiles and change their size.
 	
 	![Startboard](Images/startboard.png?raw=true)
 	
@@ -50,13 +50,13 @@ In this task, you will learn about the preview portal and how to create a new We
 	
 	_Selecting Website + SQL_
 	
-	A _blade_ is opened. Blades are your entry point to discover insights, perform actions, and build applications. This particular _blade_ collects input from you to create a new **Website**.
+	A _blade_ is opened. Blades are your entry point to discovering insights, performing actions and building applications. This particular _blade_ collects input from you to create a new **Website**.
 
 	> **Note:** For more information about _blades_, you can click the **Tour** tile on your **Startboard**. On the **Tour** blade, scroll down to the bottom and click **Learn more**. A new blade is opened with further information. You can continue the **Tour** to learn the basics of Blades, Commands, Lenses and more.
 	
 	> ![Tour](Images/tour.png?raw=true)
 
-6. When you create an application that consists of several resources working together(like in this example, a Website + SQL), it is always created in its own resource group so that you can manage the lifecycle of all related assets. Choose a name for the **Resource Group**, for example _MyResourceGroup_, and click the **Website** option.
+6. When you create an application that consists of several resources working together (like in this example, a Website + SQL), it is always created in its own resource group so that you can manage the lifecycle of all related assets. Choose a name for the **Resource Group**, for example _MyResourceGroup_, and click the **Website** option.
 
 	> **Note:** Resource group names can only contain letters, numbers, periods, underscores and dashes.
 
@@ -70,7 +70,9 @@ In this task, you will learn about the preview portal and how to create a new We
 	
 	_Changing the Web Hosting Plan_
 
-8. Scroll to the bottom of the **Web hosting plan** blade, and click **Browse all pricing tiers**. In the _Choose your pricing tier_ blade, you can choose the hosting plan that fits your needs. Web hosting plans represent a set of features and capacity that you can share across your Websites. Web hosting plans support several pricing tiers (e.g. Free, Shared, Basic and Standard), each with its own capabilities. There are a couple of differences among these tiers. Plans in the Free and Shared tier provide sites with a shared infrastructure, meaning that your sites share resources with other customers' sites. Web hosting plans in the Basic and Standard tiers provider sites with a dedicated infrastructure, meaning that only the site or sites you choose to associate with this plan will be running on those resources. In this tier you can configure your web hosting plan to use one or more virtual machine instances. As we are going to use the default web hosting plan, just close this blade.
+8. Scroll to the bottom of the **Web hosting plan** blade, and click **Browse all pricing tiers**. In the _Choose your pricing tier_ blade, you can choose the hosting plan that fits your needs. 
+
+	Web hosting plans represent a set of features and capacity that you can share across your Websites. Web hosting plans support several pricing tiers (e.g. Free, Shared, Basic and Standard), each with its own capabilities. There are a couple of differences among these tiers. Plans in the Free and Shared tier provide sites with a shared infrastructure, meaning that your sites share resources with other customers' sites. Web hosting plans in the Basic and Standard tiers provider sites with a dedicated infrastructure, meaning that only the site or sites you choose to associate with this plan will be running on those resources. In this tier you can configure your web hosting plan to use one or more virtual machine instances. As we are going to use the default web hosting plan, just close this blade.
 
 	> **Note:** For all tiers (except 'Shared') you pay one price for the web hosting plan based on the tier and your chosen capacity with no additional charge for each site that uses the plan. Shared web hosting plans are different; due to the nature of the shared infrastructure, you are charged separately for each site in the plan. 
 	

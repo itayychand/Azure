@@ -7,7 +7,7 @@ This lab includes the following tasks:
 
 1. [Portal Overview](#Task1)
 1. [Creating new elements](#Task2)
-1. [Managing Existing elements](#Task3)
+1. [Managing existing elements](#Task3)
 
 In this lab, you will learn how to:
 
@@ -18,10 +18,12 @@ In this lab, you will learn how to:
 <a name="Task1" />
 ##Portal Overview
 
-In this task we will walk through the different pieces of the Azure Management Portal.
+In this task you will walk through the different pieces of the Azure Management Portal.
 
-1. Open you browser and navigate to [manage.windowsazure.com](manage.windowsazure.com).
-2. Enter your credentials to access your _Azure Subscription_. You will land on the portal's home view. By default this view will show all the items you have ever created under your subcription.
+1. Open you browser and navigate to [http://manage.windowsazure.com](http://manage.windowsazure.com).
+2. Enter your credentials to access your _Azure Subscription_. 
+
+	You will land on the portal's home view. By default this view will show all the items you have ever created under your subcription.
 
 	![Management Portal - Landing Page](images/portal-landing-page.png?raw=true)
 
@@ -33,7 +35,7 @@ In this task we will walk through the different pieces of the Azure Management P
 
 	_Left Sidebar_
 
-4. Look at the portal's footer and notice the **NEW** button on the left and the Help button on the right. We will see more about these two items as we move on to the other tasks.
+4. Look at the portal's footer and notice the **NEW** button on the left and the Help button on the right. You will see more about these two items as you move on to the other tasks.
 
 	![New Button](images/portal-new-button.png?raw=true)
 
@@ -41,7 +43,7 @@ In this task we will walk through the different pieces of the Azure Management P
 
 <a name="Task2" />
 ##Creating new elements and services
-In this task we will go trough the process of creating a new element for our subscription. In particular, we will create a new website using the **Create Wizard**.
+In this task you will go through the process of creating a new element for your subscription. In particular, you will create a new website using the **Create Wizard**.
 
 1. Click **NEW** button that is located on the bottom left part of the screen.
 
@@ -52,7 +54,10 @@ In this task we will go trough the process of creating a new element for our sub
 	This will display the _Create Wizard_. In this section you can select the type of element, service or resource we want to create. In this case you will create a _Website_.
 
 2. Click **COMPUTE**. The compute services will be displayed alongside.
-3. Then click **WEBSITE**. Three options will be shown.
+
+3. Then click **WEBSITE**. 
+
+	Three options will be shown.
 
 	- **QUICK CREATE**: This option will allow you to setup your website with the minimum amount of steps.
 
@@ -63,7 +68,9 @@ In this task we will go trough the process of creating a new element for our sub
 	![Website Creation Options](images/create-flow.png?raw=true)
 	_Website Creation Options_
 
-4. Click **QUICK CREATE**. The creation form is presented. Here you will select the URL for your website and the region where you would like to deploy. It is recommended to select the region which is closest to your audience; for this task leave the field as is.
+4. Click **QUICK CREATE**. 
+
+	The creation form is presented. Here you will select the URL for your website and the region where you would like to deploy. It is recommended to select the region which is closest to your audience; for this task leave the field as is.
 
 5. Enter the **URL** for your website, and click **CREATE WEBSITE**.
 
@@ -74,7 +81,7 @@ In this task we will go trough the process of creating a new element for our sub
 
 	_Creating the Website_
 
-6. Notice that the **WEBSITES** item is selected on the sidebar, and the recently created asset is displayed.
+6. Notice that the **WEBSITES** item is selected on the sidebar, and the asset just created is displayed.
 
 	![Website Create](images/website-listing.png?raw=true)
 
@@ -90,7 +97,9 @@ In this task we will go trough the process of creating a new element for our sub
 ##Managing allocated resources
 In this task you will go through the available options for managing the recently created website.
 
-1. Click the website's name to display the _Quick Start Management_ page. This page provides quick access to important actions related to managing the deployment of a site in Windows Azure. This is also the default landing page in the portal for a newly created website.
+1. Click the website's name to display the _Quick Start Management_ page. 
+	
+	This page provides quick access to important actions related to managing the deployment of a site in Windows Azure. This is also the default landing page in the portal for a newly created website.
 
 	![Entering the site's management](images/website-clicked.png?raw=true)
 
@@ -122,19 +131,25 @@ In this task you will go through the available options for managing the recently
   
 	> **Note**: For more information about all these options, see [Manage websites through the Azure Management Portal](http://azure.microsoft.com/en-us/documentation/articles/web-sites-manage/).
     
-4. Click **DASHBOARD**. The website's dashboard will show. This view will provide you with the most important information at a glance. Ranging from a health report to usage statistics, this view provides the core details of your service.
+4. Click **DASHBOARD**. 
+
+	The website's dashboard will show. This view will provide you with the most important information at a glance. Ranging from a health report to usage statistics, this view provides the core details of your service.
 
 	![Website Clicked](images/website-dashboard-view.png?raw=true)
 
 	_The Dashboard view_
     
-5. On the top bar, click **Monitor**. This view allows the setup of tests to check the availability of HTTP or HTTPS endpoints, from up to three geo-distributed locations. A monitoring test fails if the HTTP response code is an error (4xx or 5xx) or the response takes more than 30 seconds. An endpoint is considered available if the monitoring tests succeed from all the specified locations.
+5. On the top bar, click **Monitor**. 
+
+	This view allows the setup of tests to check the availability of HTTP or HTTPS endpoints, from up to three geo-distributed locations. A monitoring test fails if the HTTP response code is an error (4xx or 5xx) or the response takes more than 30 seconds. An endpoint is considered available if the monitoring tests succeed from all the specified locations.
 
 	![Website Clicked](images/website-monitor-view.png?raw=true)
 
 	_The Monitor view_
     
-6. Back to the top bar, click **WEBJOBS**. The WebJobs management page lets you create on demand, scheduled, or continuously running tasks for your website.
+6. On the top bar, click **WEBJOBS**. 
+
+	The WebJobs management page lets you create tasks for your website that can run on-demand, on a schedule or continuously.
 
 	> **Note**: For more information regarding the use of Webjobs, see [How to Use the WebJobs feature in Microsoft Azure Web Sites](http://azure.microsoft.com/en-us/documentation/articles/web-sites-create-web-jobs/).
     
@@ -142,11 +157,13 @@ In this task you will go through the available options for managing the recently
 
 	_The Webjobs view_
     
-7. Lastly, click the **SCALE** tab, to go to the scaling options. For increased performance and throughput for your websites on Microsoft Azure, you can scale your Web Hosting Plan mode from Free to _Shared_, _Basic_, or _Standard_. Scaling up on Azure Websites involves two related actions: changing your _Web Hosting Plan_ mode to a higher level of service, and configuring certain settings after you have switched to the higher level of service. You can scale up or down as required. These changes take only seconds to apply and affect all websites in your Web Hosting Plan. They do not require your code to be changed or your applications to be redeployed.
+7. Lastly, click **SCALE** on the top bar, to go to the scaling options. 
+
+	For increased performance and throughput for your websites on Microsoft Azure, you can scale your Web Hosting Plan mode from Free to _Shared_, _Basic_, or _Standard_. Scaling up on Azure Websites involves two related actions: changing your _Web Hosting Plan_ mode to a higher level of service, and configuring certain settings after you have switched to the higher level of service. You can scale up or down as required. These changes take only seconds to apply and affect all websites in your Web Hosting Plan. They do not require your code to be changed or your applications to be redeployed.
 
     ![Website Clicked](images/website-scale-view.png?raw=true)
 
 	_The Scale view_
 
 ## Summary
-In this lab we walked through the _Azure Management Portal_, starting by the basic layout of the hub page and moving to the creation and management of resources, and overviewing some of the features that the portal provides.
+In this lab you have seen the _Azure Management Portal_, starting by the basic layout of the hub page, moving to the creation and management of resources. Finally you have explored some of the features that the portal provides.

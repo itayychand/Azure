@@ -5,15 +5,18 @@ In this lab you will find the prerequisites and steps to help you set up your co
 Configure your computer
 -----------------------
 
-### Install Visual Studio Update 3
-To run these Introduction to Microsoft Azure labs, [Visual Studio 2013 Update 3](http://www.microsoft.com/en-us/download/details.aspx?id=43721) (or later)  is required.
+### Install Visual Studio Ultimate 2015 Preview
+To run these Introduction to Microsoft Azure labs, **Visual Studio 2015 Preview** is required. It can be downloaded and installed from [here](http://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx).
 
-> **Note:** While not required to complete this lab, the [Web Essentials](http://vswebessentials.com/download) extension for Visual Studio improves the HTML and JavaScript editing experience by adding in features like missing Angular attribute detection and improved JavaScript IntelliSense.
+Alternatively, you can use Visual Studio 2013, provided the following have been installed:
 
-### Install Azure SDK for Visual Studio 2013
-In order to build Microsoft Azure applications set up your development environment by installing the [Azure SDK for Visual Studio 2013](http://go.microsoft.com/fwlink/?linkid=324322&clcid=0x409).
+* Visual Studio 2013 Update 3 (or higher) ([download](http://www.visualstudio.com/en-us/downloads/download-visual-studio-vs)).
 
-> **Note:** Depending on how many of the SDK dependencies you already have on your machine, installing the SDK could take a long time, from several minutes to a half hour or more.
+* Azure SDK for Visual Studio 2013 ([download](http://go.microsoft.com/fwlink/?linkid=324322&clcid=0x409)).
+
+	> **Note 1:** Depending on how many of the SDK dependencies you already have on your machine, installing the SDK could take a long time, from several minutes to a half hour or more.
+
+    > **Note 2:** While not required to complete this lab, the [Web Essentials](http://vswebessentials.com/download) extension for Visual Studio improves the HTML and JavaScript editing experience by adding in features like missing Angular attribute detection and improved JavaScript IntelliSense.
 
 ### Clone or download content of this GitHub repository (optional but recommended)
 
@@ -22,7 +25,4 @@ The labs provided have a combination of text documentation and sample code. In o
 Summary
 -------
 
-You have:
-
-* Visual Studio 2013 with Update 3 with the _Azure SDK for Visual Studio 2013_.
-
+You have Visual Studio 2015 Preview, or Visual Studio 2013 with Update 3 (or higher) and the _Azure SDK for Visual Studio 2013_, installed on your computer.

@@ -1,8 +1,8 @@
-# Introduction to Microsoft Azure #
+﻿# Introduction to Microsoft Azure #
 
 In these labs you will get introduced to Microsoft Azure and its capabilities. You will tour around the management portals, create web applications, and deploy them to Azure. Additionally, you will use Azure Active Directory to log users into your application.
 
-This hands-on lab includes the following exercises:
+This hands-on lab includes the following labs:
 
 #### [Lab 1 - Setup](_setup) ####
 ##### Setting up your environment for the labs #####

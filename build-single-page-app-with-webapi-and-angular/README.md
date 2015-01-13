@@ -457,9 +457,9 @@ In this task you will verify that the Web API service you built in the previous 
 
 > **Note:** Make sure that Internet Explorer is selected in the Start button located on the Visual Studio toolbar.
 
-![Internet Explorer option](./images/runInIE.png)
+> ![Internet Explorer option](./images/runInIE.png)
 
-_Internet Explorer option_
+> _Internet Explorer option_
 
 1. Press **F5** to run the solution. The Log in page should appear in the browser.
 

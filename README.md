@@ -28,3 +28,7 @@ In this lab you will create a simple web application and deploy it to an Azure W
 #### [Lab 6 - Build a Single Page Application (SPA) with ASP.NET Web API and Angular.js using Azure Active Directory to log in users] (build-single-page-app-with-webapi-and-angular) ####
 
 In this lab you will learn how to create a Single Page Application using ASP.NET MVC and Web API using Azure Active Directory to log in users. Additionally, you will use Angular.js to create the application interface.
+
+#### [Lab 7 - Build a web application with ASP.NET MVC using DocumentDB] (build-web-app-using-documentdb) ####
+
+In this lab you will learn how to create a todo list web application using Azure DocumentDB where the tasks will be stored as JSON documents.

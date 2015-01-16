@@ -18,6 +18,19 @@ Alternatively, you can use Visual Studio 2013, provided the following have been 
 
     > **Note 2:** While not required to complete this lab, the [Web Essentials](http://vswebessentials.com/download) extension for Visual Studio improves the HTML and JavaScript editing experience by adding in features like missing Angular attribute detection and improved JavaScript IntelliSense.
 
+### Install Azure SDK for .Net ###
+The Microsoft Azure SDK for .Net is available through the [Microsoft Web Platform Installer](http://www.microsoft.com/web/downloads/platform.aspx). For the purposes of this lab you need version 2.3 or higher.
+
+To do so, follow these instructions:
+
+1. Open Microsoft Web Platform Installer.
+1. Find the row for **Microsoft Azure SDK for .Net** corresponding to the version of Visual Studio you have installed.  Click the **Add** button. 
+1. Click **Install**.
+
+![Install Microsoft Azure SDK for .Net](images/install-microsoft-azure-sdk-for-net.png?raw=true)
+
+_Install Microsoft Azure SDK for .Net for your version of Visual Studio_
+
 ### Clone or download content of this GitHub repository (optional but recommended)
 
 The labs provided have a combination of text documentation and sample code. In order to have all documentation and all necessary sample files locally on your computer, we strongly recommend you to clone (using [Git](http://git-scm.com/)) or [download](https://github.com/Azure-Readiness/HOL-Intro-to-Azure/archive/master.zip) all content in this repository locally on your computer. If you download the zip archive, you will need to [unblock](http://blogs.msdn.com/b/delay/p/unblockingdownloadedfile.aspx) the zip file before extracting it.

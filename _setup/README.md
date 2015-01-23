@@ -35,6 +35,7 @@ _Install Microsoft Azure SDK for .Net for your version of Visual Studio_
 
 The labs provided have a combination of text documentation and sample code. In order to have all documentation and all necessary sample files locally on your computer, we strongly recommend you to clone (using [Git](http://git-scm.com/)) or [download](https://github.com/Azure-Readiness/HOL-Intro-to-Azure/archive/master.zip) all content in this repository locally on your computer. If you download the zip archive, you will need to [unblock](http://blogs.msdn.com/b/delay/p/unblockingdownloadedfile.aspx) the zip file before extracting it.
 
+
 Summary
 -------
 

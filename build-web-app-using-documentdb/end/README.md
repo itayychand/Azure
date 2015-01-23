@@ -6,11 +6,11 @@ To configure the end solution you will need to have created the DocumentDB datab
 
 Once you have those values, perform the following steps:
 
-1. Open Visual Studio and then the **todo** solution.
+1. Open Visual Studio and then the **Todo** solution.
 
 1. Open the **Web.config** file.
 
-1. Find the `appSettings` element and update the following values with the appropriate values corresponding to your Azure subscription:
+1. Find the `appSettings` element and update the following values with the appropriate values that correspond to your Azure subscription:
 
 	* **endpoint**: **URI** value copied from Azure
 	* **authKey**: **PRIMARY KEY** value copied from Azure
@@ -19,4 +19,4 @@ Once you have those values, perform the following steps:
 
 You should now be ready to run the solution. 
 
-If/when deploying the application to Azure Websites you might need to provide additional information in the Publish Web dialog. Those would have been otherwise provided if the web application had been built from scratch following the instructions in the lab. 
+If/when deploying the application to Azure Websites, you could be asked to provide additional information in the Publish Web dialog box if you have not built the application from scratch following the instructions in the lab. 

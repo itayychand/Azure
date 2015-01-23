@@ -1,19 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Azure.Documents;
-using Microsoft.Azure.Documents.Client;
-using System.Configuration;
-using Microsoft.Azure.Documents.Linq;
-using todo.Models;
-using System.Threading.Tasks;
-
-namespace todo
+﻿namespace Todo
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Configuration;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Microsoft.Azure.Documents;
+    using Microsoft.Azure.Documents.Client;
+    using Microsoft.Azure.Documents.Linq;
+    using Models;
+
     public static class DocumentDBRepository
     {
         private static string databaseId;
-        private static String DatabaseId
+        private static string collectionId;
+        private static Database database;
+        private static DocumentCollection collection;
+        private static DocumentClient client;
+
+        private static string DatabaseId
         {
             get
             {
@@ -26,8 +31,7 @@ namespace todo
             }
         }
 
-        private static string collectionId;
-        private static String CollectionId
+        private static string CollectionId
         {
             get
             {
@@ -40,7 +44,6 @@ namespace todo
             }
         }
 
-        private static Database database;
         private static Database Database
         {
             get
@@ -54,7 +57,6 @@ namespace todo
             }
         }
 
-        private static DocumentCollection collection;
         private static DocumentCollection Collection
         {
             get
@@ -68,7 +70,6 @@ namespace todo
             }
         }
 
-        private static DocumentClient client;
         private static DocumentClient Client
         {
             get
@@ -83,6 +84,47 @@ namespace todo
 
                 return client;
             }
+        }
+
+        public static List<Item> GetIncompleteItems()
+        {
+            return Client.CreateDocumentQuery<Item>(Collection.DocumentsLink)
+                       .Where(d => !d.Completed)
+                       .AsEnumerable()
+                       .ToList<Item>();
+        }
+        
+        public static async Task<Document> CreateItemAsync(Item item)
+        {
+            return await Client.CreateDocumentAsync(Collection.SelfLink, item);
+        }
+
+        public static Item GetItem(string id)
+        {
+            return Client.CreateDocumentQuery<Item>(Collection.DocumentsLink)
+                            .Where(d => d.Id == id)
+                            .AsEnumerable()
+                            .FirstOrDefault();
+        }
+
+        public static Document GetDocument(string id)
+        {
+            return Client.CreateDocumentQuery(Collection.DocumentsLink)
+                          .Where(d => d.Id == id)
+                          .AsEnumerable()
+                          .FirstOrDefault();
+        }
+
+        public static async Task<Document> UpdateItemAsync(Item item)
+        {
+            Document doc = GetDocument(item.Id);
+            return await Client.ReplaceDocumentAsync(doc.SelfLink, item);
+        }
+
+        public static async Task DeleteItemAsync(string id)
+        {
+            Document doc = GetDocument(id);
+            await Client.DeleteDocumentAsync(doc.SelfLink);
         }
 
         private static DocumentCollection ReadOrCreateCollection(string databaseLink)
@@ -113,47 +155,6 @@ namespace todo
             }
 
             return db;
-        }
-
-        public static List<Item> GetIncompleteItems()
-        {
-            return Client.CreateDocumentQuery<Item>(Collection.DocumentsLink)
-                    .Where(d => !d.Completed)
-                    .AsEnumerable()
-                    .ToList<Item>();
-        }
-
-        public static async Task<Document> CreateItemAsync(Item item)
-        {
-            return await Client.CreateDocumentAsync(Collection.SelfLink, item);
-        }
-
-        public static Item GetItem(string id)
-        {
-            return Client.CreateDocumentQuery<Item>(Collection.DocumentsLink)
-                        .Where(d => d.Id == id)
-                        .AsEnumerable()
-                        .FirstOrDefault();
-        }
-
-        public static Document GetDocument(string id)
-        {
-            return Client.CreateDocumentQuery(Collection.DocumentsLink)
-                                .Where(d => d.Id == id)
-                                .AsEnumerable()
-                                .FirstOrDefault();
-        }
-
-        public static async Task<Document> UpdateItemAsync(Item item)
-        {
-            Document doc = GetDocument(item.Id);
-            return await Client.ReplaceDocumentAsync(doc.SelfLink, item);
-        }
-
-        public static async Task DeleteItemAsync(string id)
-        {
-            Document doc = GetDocument(id);
-            await client.DeleteDocumentAsync(doc.SelfLink);
         }
     }
 }

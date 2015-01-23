@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace todo
+namespace Todo
 {
     public class BundleConfig
     {

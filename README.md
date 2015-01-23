@@ -29,6 +29,10 @@ In this lab you will create a simple web application and deploy it to an Azure W
 
 In this lab you will learn how to create a Single Page Application using ASP.NET MVC and Web API using Azure Active Directory to log in users. Additionally, you will use Angular.js to create the application interface.
 
-#### [Lab 7 - Build a web application with ASP.NET MVC using DocumentDB] (build-web-app-using-documentdb) ####
+#### [Lab 7 - Create a virtual machine in Microsoft Azure] (create-virtual-machine) ####
+
+In this lab you will learn about Infrastructure As A Service (IaaS) and how to create a virtual machine using the Azure Preview Portal, the Command-line interface (CLI), Powershell or RunBook.
+
+#### [Lab 8 - Build a web application with ASP.NET MVC using DocumentDB] (build-web-app-using-documentdb) ####
 
 In this lab you will learn how to create a todo list web application using Azure DocumentDB where the tasks will be stored as JSON documents.

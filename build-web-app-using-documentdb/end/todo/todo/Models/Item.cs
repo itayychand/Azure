@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace todo.Models
+﻿namespace Todo.Models
 {
+    using Newtonsoft.Json;
+
     public class Item
     {
         [JsonProperty(PropertyName = "id")]

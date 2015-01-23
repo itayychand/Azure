@@ -1,21 +1,25 @@
-﻿using System.Threading.Tasks;
-using System.Web.Mvc;
-using todo.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
+using Todo.Models;
 
-namespace todo.Controllers
+namespace Todo.Controllers
 {
     public class ItemController : Controller
     {
         public ActionResult Index()
         {
             var items = DocumentDBRepository.GetIncompleteItems();
-            return View(items);
+            return this.View(items);
         }
 
         public ActionResult Create()
         {
-            return View();
+            return this.View();
         }
 
         [HttpPost]
@@ -25,9 +29,10 @@ namespace todo.Controllers
             if (ModelState.IsValid)
             {
                 await DocumentDBRepository.CreateItemAsync(item);
-                return RedirectToAction("Index");
+                return this.RedirectToAction("Index");
             }
-            return View(item);
+
+            return this.View(item);
         }
 
         [HttpPost]
@@ -37,10 +42,10 @@ namespace todo.Controllers
             if (ModelState.IsValid)
             {
                 await DocumentDBRepository.UpdateItemAsync(item);
-                return RedirectToAction("Index");
+                return this.RedirectToAction("Index");
             }
 
-            return View(item);
+            return this.View(item);
         }
 
         public ActionResult Edit(string id)
@@ -53,10 +58,10 @@ namespace todo.Controllers
             Item item = (Item)DocumentDBRepository.GetItem(id);
             if (item == null)
             {
-                return HttpNotFound();
+                return this.HttpNotFound();
             }
 
-            return View(item);
+            return this.View(item);
         }
 
         public ActionResult Delete(string id)
@@ -69,30 +74,28 @@ namespace todo.Controllers
             Item item = (Item)DocumentDBRepository.GetItem(id);
             if (item == null)
             {
-                return HttpNotFound();
+                return this.HttpNotFound();
             }
 
-            return View(item);
+            return this.View(item);
         }
 
         [HttpPost, ActionName("Delete")]
-        // To protect against Cross-Site Request Forgery, validate that the anti-forgery token was received and is valid
-        // for more details on preventing see http://go.microsoft.com/fwlink/?LinkID=517254
+        //// To protect against Cross-Site Request Forgery, validate that the anti-forgery token was received and is valid
+        //// for more details on preventing see http://go.microsoft.com/fwlink/?LinkID=517254
         [ValidateAntiForgeryToken]
-
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         public async Task<ActionResult> DeleteConfirmed([Bind(Include = "Id")] string id)
         {
             await DocumentDBRepository.DeleteItemAsync(id);
-            return RedirectToAction("Index");
+            return this.RedirectToAction("Index");
         }
 
         public ActionResult Details(string id)
         {
-            Item item = DocumentDBRepository.GetItem(id);
-            return View(item);
+            var item = DocumentDBRepository.GetItem(id);
+            return this.View(item);
         }
-
     }
 }

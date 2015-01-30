@@ -35,17 +35,17 @@ In this task you will walk through the different pieces of the Azure Management 
 
 	_Left Sidebar_
 
-4. Look at the portal's footer and notice the **NEW** button on the left and the Help button on the right. You will see more about these two items as you move on to the other tasks.
+4. Look at the portal's footer and notice the **NEW** button on the left and the **Help** button on the right. You will see more about these two items as you move on to the other tasks.
 
 	![New Button](images/portal-new-button.png?raw=true)
 
-	_NEW Button_
+	_NEW and Help Buttons_
 
 <a name="Task2" />
 ##Creating new elements and services
 In this task you will go through the process of creating a new element for your subscription. In particular, you will create a new website using the **Create Wizard**.
 
-1. Click **NEW** button that is located on the bottom left part of the screen.
+1. Click the **NEW** button located at the bottom left part of the screen.
 
 	![New Button Click](images/new-button-clicked.png?raw=true)
 
@@ -55,7 +55,7 @@ In this task you will go through the process of creating a new element for your 
 
 2. Click **COMPUTE**. The compute services will be displayed alongside.
 
-3. Then click **WEBSITE**. 
+3. Click **WEBSITE**. 
 
 	Three options will be shown.
 
@@ -81,29 +81,37 @@ In this task you will go through the process of creating a new element for your 
 
 	_Creating the Website_
 
-6. Notice that the **WEBSITES** item is selected on the sidebar, and the asset just created is displayed.
+6. After a few minutes the website will be created and you will see a notification on the status bar. The **WEBSITES** item is selected on the sidebar, and the asset just created is displayed.
 
 	![Website Create](images/website-listing.png?raw=true)
 
 	_Website Created_
 	
-7. Click the site name you have just created to enter the site dashboard. Then click, the **BROWSE** button, located at the bottom, to navigate to the site.
+7. Click the site name you have just created to navigate to the website's _Quick Start Management_ page. 
+
+	![Entering the site's management](images/website-clicked.png?raw=true)
+
+	_Entering the site's management page_
+
+1. Click **BROWSE**, located at the bottom of the page, to navigate to the site.
+
+	![Clicking Browse to view the site](images/clicking-browse-to-view-the-site.png?raw=true)
+
+	_Clicking Browse_
 
 	![Browsing the Website](images/browsing-the-website.png?raw=true)
 
 	_Browsing the Website_
+
+1. Close the website and return to the **Management Portal**.
 	
 <a name="Task3" />
 ##Managing allocated resources
 In this task you will go through the available options for managing the recently created website.
 
-1. Click the website's name to display the _Quick Start Management_ page. 
+1. If not already in the _Quick Start Management_ page, click the website's name to display it. 
 	
 	This page provides quick access to important actions related to managing the deployment of a site in Windows Azure. This is also the default landing page in the portal for a newly created website.
-
-	![Entering the site's management](images/website-clicked.png?raw=true)
-
-	_Entering the site's management page_
 
     ![_Website's Landing Page](images/website-quickstart.png?raw=true)
 
@@ -139,7 +147,7 @@ In this task you will go through the available options for managing the recently
 
 	_The Dashboard view_
     
-5. On the top bar, click **Monitor**. 
+5. On the top bar, click **MONITOR**. 
 
 	This view allows the setup of tests to check the availability of HTTP or HTTPS endpoints, from up to three geo-distributed locations. A monitoring test fails if the HTTP response code is an error (4xx or 5xx) or the response takes more than 30 seconds. An endpoint is considered available if the monitoring tests succeed from all the specified locations.
 
@@ -164,6 +172,26 @@ In this task you will go through the available options for managing the recently
     ![Website Clicked](images/website-scale-view.png?raw=true)
 
 	_The Scale view_
+
+	>**Note:** It is good practice to cleanup any resources that will not be used. To delete the demo website just created, follow these steps:
+	>
+	>1. Click **DASHBOARD** at the top of the page.
+	>
+	>1. Click **DELETE** at the bottom of the page.
+	>
+	>![Clicking Delete website](images/clicking-delete-website.png?raw=true)
+	>
+	>_Clicking Delete_
+	>
+	>1. In the **Delete Confirmation** dialog that pops up, click the **checkmark** button.
+	>
+	>![Delete Confirmation dialog](images/delete-confirmation-dialog.png?raw=true)
+	>
+	>_Delete Confirmation_
+	>
+	>After a few moments you should see a notification indicating the website was deleted. The website will not be listed under **WEBSITES** either.
+
+
 
 ## Summary
 In this lab you have seen the _Azure Management Portal_, starting by the basic layout of the hub page, moving to the creation and management of resources. Finally you have explored some of the features that the portal provides.

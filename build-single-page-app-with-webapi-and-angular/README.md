@@ -86,7 +86,7 @@ Microsoft ASP.NET tools for Windows Azure Active Directory makes it simple to en
 
 In this task you will start creating a new ASP.NET MVC project with support for ASP.NET Web API. You will then add the Entity Framework's model classes and the database initializator to insert the quiz questions.
 
-1. Open Visual Studio andd from the **File** menu, hover over the **New** option and click **Project**.
+1. Open Visual Studio and from the **File** menu, hover over the **New** option and click **Project**.
 
     ![Creating a New Project](./images/newProject.png)
     
@@ -102,7 +102,7 @@ In this task you will start creating a new ASP.NET MVC project with support for 
     
     _Creating a new ASP.NET Web Application project_
 
-3. In the **New ASP.NET Project** dialog, select **MVC** and select the **Web API** option. Make sure that the **Host in the cloud** option is also selected, and then click **Change Authentication**.
+3. In the **New ASP.NET Project** dialog, select **MVC**. Make sure that the **Host in the cloud** option is also selected, and then click **Change Authentication**.
 
     ![Creating a new project with the MVC template, including Web API components](./images/newMvcProjectTemplate.png)
     
@@ -169,7 +169,7 @@ In this task you will start creating a new ASP.NET MVC project with support for 
     * **TriviaOption:** represents a single option associated with a quiz question
     * **TriviaQuestion:** represents a quiz question and exposes the associated options through the **Options** property
     * **TriviaAnswer:** represents the option selected by the user in response to a quiz question
-    * **TriviaContext:** represents the Entity Framework's database context of the Geek Quiz application. This class derives from **DContext** and exposes **DbSet** properties that represent collections of the entities described above.
+    * **TriviaContext:** represents the Entity Framework's database context of the Geek Quiz application. This class derives from **DbContext** and exposes **DbSet** properties that represent collections of the entities described above.
     * **TriviaDatabaseInitializer:** the implementation of the Entity Framework initializer for the **TriviaContext** class which inherits from **CreateDatabaseIfNotExists**. The default behavior of this class is to create the database only if it does not exist, inserting the entities specified in the **Seed** method.
     
 10. Open the **Global.asax.cs** file and add the following using statement.
@@ -464,6 +464,8 @@ In this task you will verify that the Web API service you built in the previous 
 1. Press **F5** to run the solution. The Log in page should appear in the browser.
 
     > **Note:** When the application starts, the default MVC route is triggered, which by default is mapped to the Index action of the HomeController class. Since HomeController is restricted to authenticated users (remember that you decorated that class with the Authorize attribute previously) and there is no user authenticated yet, the application redirects the original request to the log in page.
+	>
+	> **Note 2:** The first time you run the application locally you may be prompted to trust the IIS Express SSL certificate. If so, click Yes and then accept the installation of the certificate. IIS Express is a lightweight, self-contained version of IIS optimized for developers, that Visual Studio uses when debugging local web applications. 
 
 2. Enter the Active Directory credentials.
 
@@ -659,7 +661,7 @@ Wait until the package is downloaded and installed.
     
 	> **Note:** This function sends the answer selected by the user to the **Trivia** Web API and stores the result –i.e. if the answer is correct or not– in the **$scope** object.
 
-	The **nextQuestion** and **sendAnswer** functions, added in the previous steps, use the AngularJS **$http** object to abstract the communication with the Web API via the XMLHttpRequest JavaScript object from the browser. AngularJS supports another service that brings a higher level of abstraction to perform CRUD operations against a resource through RESTful APIs. The AngularJS **$resource** object has action methods which provide high-level behaviors without the need to interact with the **$http** object. Consider using the **$resource** object in scenarios that requires the CRUD model (fore information, see the [$resource documentation](http://docs.angularjs.org/api/ngResource/service/$resource)).
+	The **nextQuestion** and **sendAnswer** functions, added in the previous steps, use the AngularJS **$http** object to abstract the communication with the Web API via the XMLHttpRequest JavaScript object from the browser. AngularJS supports another service that brings a higher level of abstraction to perform CRUD operations against a resource through RESTful APIs. The AngularJS **$resource** object has action methods which provide high-level behaviors without the need to interact with the **$http** object. Consider using the **$resource** object in scenarios that requires the CRUD model (for more information, see the [$resource documentation](http://docs.angularjs.org/api/ngResource/service/$resource)).
 
 8. The next step is to create the AngularJS template that defines the view for the quiz. To do this, open the **Index.cshtml** file inside the **Views | Home** folder and replace the content with the following code.
 

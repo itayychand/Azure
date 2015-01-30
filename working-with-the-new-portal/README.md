@@ -3,7 +3,7 @@
 
 The new Azure Preview portal is an all-in-one, work-anywhere experience. Now you can manage websites, databases and Visual Studio Online team projects in a reimagined UX personalized to your work style. It was built from the ground up to put your _applications_ at the center of the experience. 
 
-This unified hub radically simplifies building, deploying, and managing your cloud resources. Imagine a single easy-to-use console built just for you, your team, your projects. It brings together all of the cloud resources, team members, and lifecycle stages of your application and provides you with a centralized place to plan, develop, test, provision, deploy, scale, and monitor those applications. This approach can help teams embrace a DevOps culture by bringing both development and operations capabilities and perspectives together in a meaningful way.
+This unified hub radically simplifies building, deploying, and managing your cloud resources. Imagine a single, easy-to-use console built just for you, your team, your projects. It brings together all of the cloud resources, team members, and lifecycle stages of your application and provides you with a centralized place to plan, develop, test, provision, deploy, scale, and monitor those applications. This approach can help teams embrace a DevOps culture by bringing both development and operations capabilities and perspectives together in a meaningful way.
 
 The new portal allows each user to transform the portal home page (called the _Startboard_) into their own customized dashboard. Stay on top of the things that matter most by pinning them to your **Startboard**. Resize parts to show more or less data. Drill in for all the details. And see insights (and opportunities) across apps and resources. New components include the following:
 
@@ -131,6 +131,31 @@ In this task, you will learn about the preview portal and how to create a new We
 	
 	> **Note:** Notice that the recently created resource group was automatically added to the Startboard for easy access.
 	![Resource Group added to Startboard](Images/resource-group-added-to-startboard.png?raw=true)
+
+	>**Note 2:** It is good practice to cleanup any resources that will not be used. To delete the demo resources just created, follow these steps:
+	>
+	>1. In the Resource Group, click **DELETE** at the top of the page.
+	>
+	>![Clicking Delete Resource Group](Images/clicking-delete-resource-group.png?raw=true)
+	>
+	>_Clicking Delete_
+	>
+	>1. In the Confirmation blade that opens, type the name of the resource group and click the **Delete** button.
+	>
+	>![Deleting Resource Group Confirmation](Images/deleting-resource-group-confirmation.png?raw=true)
+	>
+	>_Delete Confirmation_
+	>
+	>After a few moments you should see a notification in the Notifications Hub indicating the resource group was deleted. 
+	>
+	>![Notification after Resource Group was deleted](Images/notification-after-resource-group-was-deleted.png?raw=true)
+	>
+	>1. Click **Home** to navigate to the StartBoard. Once there, find and right-click the tile for the resource group. Click **unpin from Startboard**.
+	>
+	>![Unpin Resource Group from StartBoard](Images/unpin-resource-group-from-startboard.png?raw=true)
+	>
+	>_Unpinning Resource Group from StartBoard_
+	>The tile is removed.
 
 
 <a name="Summary" />

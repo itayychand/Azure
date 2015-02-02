@@ -56,43 +56,12 @@ To use Microsoft Azure DocumentDB, you must create a DocumentDB account.  This t
 
 	> - **Location**: The geographic location where your DocumentDB account will be hosted.
 
-1. Wait until the DocumentDB account is created. This can take a few minutes. You can monitor the creation progress on the **Notifications** Hub.
+	The DocumentDB account will be created. As this can take some time, you will proceed with the creation of the project and come back to retrieve some necessary information later, once the account creation has completed. Leave the browser open. You can monitor the creation progress on the **Notifications** Hub from time to time, if you wish to.
 	
 	![Checking the creation status in the Notification Hub](./images/checking-the-creation-status-notification-hub.png?raw=true)
 
 	_Checking the creation status in the Notification Hub_
 
-1. After the new DocumentDB is created, click on the **Created DocumentDB** notification displayed in the **Notifications** Hub.
-
-	![creation-succeeded-notification-hub](./images/creation-succeeded-notification-hub.png?raw=true "Creation succeeded in Notification Hub")
-
-	_Creation succeeded in Notification Hub_
-
-	After the DocumentDB account has been created, it is ready to use with the default settings. You will now retrieve some values that will be used later on to configure the application.
-
-1. Click on your new DocumentDB account under the resource group.
-
-	> **Note:** The default consistency of the DocumentDB account will be set to Session. You can adjust the default consistency setting via the [preview management portal](https://portal.azure.com/#gallery/Microsoft.DocumentDB).
-
-	![The new DocumentDB account has been created](./images/new-documentdb-account-created.png?raw=true)
-
-	_The new DocumentDB account has been created_
-
-	> **Note:** You can also access your existing DocumentDB accounts from the **Browse** blade.
-
-	> 	![Accessing the DocumentDB accounts from the Browse blade](./images/accessing-the-documentdb-accounts-from-browse.png?raw=true)
-
-	> 	_Accessing the DocumentDB accounts from the Browse blade_
-
-	> 	![Accessing the just created DocumentDB account](./images/accessing-the-new-documentdb-account.png?raw=true)
-
-	> 	_Accessing the DocumentDB account just created_
-
-1. Now, click the **KEYS** button to open the **Keys** blade. Copy the endpoint **URI** and the **PRIMARY KEY** values sequentially to the clipboard and to a text file. Keep them handy as you will use these values in the web application you will be creating.
-
-	![Taking note of your just created DocumentDB account keys](./images/copying-your-documentdb-keys.png?raw=true)
-
-	_Taking note of the DocumentDB account keys just created_
 
 In the next section you will be guided step by step to create a new ASP.NET MVC application from the ground up.
 
@@ -511,12 +480,10 @@ In this task you will add code in the **ItemController** class to handle the fol
 
 	This code takes care of setting up the database, a DocumentCollection, and creating code to connect to DocumentDB through the DocumentClient.
 
-	Now you will update the configuration to set the endpoint and authorization key values, using the values retrieved in the last step of the [Create a DocumentDB database account](#creating-a-documentdb-database-account) task.
+	Now you will update the configuration to set the endpoint and authorization key values, retrieving them from the DocumentDB account that you set to create in the first task of this lab. 
 
 1. Open the **Web.config** file and find the **appSettings** section. Update it to contain the last 4 keys in the snippet below. 
 	
-	Replace **URI** and **PRIMARY KEY** values with the ones saved earlier.
-
 	````XML
 	<appSettings>
 		<add key="webpages:Version" value="3.0.0.0"/>
@@ -529,6 +496,39 @@ In this task you will add code in the **ItemController** class to handle the fol
 		<add key="collection" value="Items" />
 	</appSettings>
 	````
+
+
+1. Switch to the browser instance in which you have the Azure Preview Portal open. Verify that the DocumentDB account has been created by looking for a **Created DocumentDB** notification in the **Notifications** Hub. If there is one, click it. If not, wait until the account finishes creating and the notification appears.
+
+	![creation-succeeded-notification-hub](./images/creation-succeeded-notification-hub.png?raw=true "Creation succeeded in Notification Hub")
+
+	_Creation succeeded in Notification Hub_
+
+1. Click on your new **DocumentDB** account under the resource group.
+
+	> **Note:** The default consistency of the DocumentDB account will be set to Session. You can adjust the default consistency setting via the [preview management portal](https://portal.azure.com/#gallery/Microsoft.DocumentDB).
+
+	![The new DocumentDB account has been created](./images/new-documentdb-account-created.png?raw=true)
+
+	_The new DocumentDB account has been created_
+
+	> **Note:** You can also access your existing DocumentDB accounts from the **Browse** blade.
+
+	> 	![Accessing the DocumentDB accounts from the Browse blade](./images/accessing-the-documentdb-accounts-from-browse.png?raw=true)
+
+	> 	_Accessing the DocumentDB accounts from the Browse blade_
+
+	> 	![Accessing the just created DocumentDB account](./images/accessing-the-new-documentdb-account.png?raw=true)
+
+	> 	_Accessing the DocumentDB account just created_
+
+1. Now, click the **KEYS** button to open the **Keys** blade. Copy the endpoint **URI** and paste the value in the **Web.config** file open in Visual Studio, in place of the **URI** placeholder.
+
+	![Retrieving the keys of the DocumentDB account just created](./images/copying-your-documentdb-keys.png?raw=true)
+
+	_Retrieving the keys of the DocumentDB account just created_
+
+1. Switch back to the browser in which the **Keys** blade is open and copy the **PRIMARY KEY** value. Switch to Visual Studio and paste it in the **Web.config** file, replacing the **PRIMARY KEY** placeholder. 
 
 	Now that the code for handling the database is ready, let's add some code to do the work for the views.
 

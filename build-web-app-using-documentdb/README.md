@@ -1,4 +1,4 @@
-﻿Build a web application with ASP.NET MVC using DocumentDB
+﻿Building a web application with ASP.NET MVC using DocumentDB
 =======================================================================================
 
 **Azure DocumentDB** is a fully-managed, highly-scalable, NoSQL document database service provided by Azure. Its many benefits include rich query over a schema-free JSON data model, transactional execution of JavaScript logic, and scalable storage and throughput. You can find out more about DocumentDB online in the [Microsoft Azure subsite for DocumentDB](http://azure.microsoft.com/en-us/services/documentdb/).
@@ -14,6 +14,7 @@ This lab includes instructions for the following tasks:
 * [Wiring up DocumentDB](#wiring-up-documentdb)
 * [Running the application locally](#running-the-application-locally)
 * [Deploying the application to Azure Websites](#deploying-the-app-to-azure)
+* [Appendix - Cleanup](#cleanup)
 
 <a name="creating-a-documentdb-database-account" />
 ## Creating a DocumentDB database account
@@ -865,6 +866,52 @@ The following steps will show you how to deploy the application to Azure as an A
     
     _Publish Web dialog - Connection tab_
 -->
+
+<a name="cleanup" />
+##Appendix - Cleanup
+
+In this task you will learn how to delete the resources created created in the previous sections. These are:
+
+* a website
+* a DocumentDB account
+
+To delete the website follow these steps:
+
+1. In your browser, go to [the preview management portal](https://portal.azure.com/), and sign in with your Azure credentials.
+
+2. Click **BROWSE** in the Navigation hub on the left and then **Websites**. 
+
+	![Browse websites](images/browse-websites.png?raw=true)
+
+	_Browsing websites_
+
+	A blade displaying all websites will be displayed. 
+
+1. Select your website and click **DELETE** in the details blade.
+
+	![Clicking Delete website](images/clicking-delete-website.png?raw=true)
+
+	_Clicking Delete to delete website_
+
+4. In the **Delete Confirmation** dialog, click **Yes**.
+
+	The website will be deleted. You will see a notification in the **Notifications** hub.
+
+To delete the DocumentDB account proceed in a similar way:
+
+1. Click **BROWSE** in the Navigation hub on the left and then **DocumentDB accounts**. 
+
+1. Click your documentDB account and in the details blade that opens, click **Delete**.
+
+	![Accessing the just created DocumentDB account](./images/accessing-the-new-documentdb-account.png?raw=true)
+
+	_Accessing the DocumentDB account just created_
+
+1. In the confirmation blade that appears, type your documentDB account name and click **Delete**. The account will be deleted.
+
+	![Confirming deletion of DocumentDB account](images/confirm-deletion-of-documentdb-account.png?raw=true)
+
+	_Confirming deletion of DocumentDB account_
 
 ##Summary
 

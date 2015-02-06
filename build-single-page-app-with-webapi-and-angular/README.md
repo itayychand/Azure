@@ -1,4 +1,4 @@
-﻿Build a Single Page Application (SPA) with ASP.NET Web API and Angular.js using Azure Active Directory to log in users
+﻿Building a Single Page Application (SPA) with ASP.NET Web API and Angular.js using Azure Active Directory to Log in Users
 =======================================================================================
 
 In traditional web applications, the client (browser) initiates the communication with the server by requesting a page. The server then processes the request and sends the HTML of the page to the client. In subsequent interactions with the page –e.g. the user navigates to a link or submits a form with data– a new request is sent to the server, and the flow starts again: the server processes the request and sends a new page to the browser in response to the new action requested by the client.
@@ -19,6 +19,7 @@ This lab includes the following tasks:
 * [Running the Single Page Application](#running-the-single-page-application)
 * [Creating a Flip Animation Using CSS3](#creating-a-flip-animation-using-css3)
 * [Deploying the Application to Azure](#deploying-the-app-to-azure)
+* [Appendix - Cleanup](#cleanup)
 
 <a name="adding-global-administrator-to-AAD" />
 ## Adding a Global Administrator to your Active Directory
@@ -252,7 +253,7 @@ In this task you will start creating a new ASP.NET MVC project with support for 
     </div>
     ````
 
-15. Update the footer of the layout page by replacing _My ASP.NET Application_ with _Geek Quiz_. To do this, replace the content of the `<footer>` element with the following highlighted code.
+15. Update the footer of the layout page by replacing _My ASP.NET Application_ with _Geek Quiz_. To do this, replace the content of the `<footer>` element with the one in the following code.
 
     <!-- mark:5 -->
     ````HTML
@@ -283,7 +284,7 @@ You will use the ASP.NET Scaffolding tools provided by Visual Studio to create t
     using Newtonsoft.Json.Serialization;
     ````
 
-3. Update the **Register** method to globally configure the formatter for the JSON data retrieved by the Web API action methods, as shown in the first sentence of the method (highlighted) below.
+3. Update the **Register** method to globally configure the formatter for the JSON data retrieved by the Web API action methods, as shown in the first sentence of the method below.
 
     <!-- mark:7-8 -->
     ````C#
@@ -525,7 +526,7 @@ In this task you will verify that the Web API service you built in the previous 
 	To call the Graph API, you first need to retrieve a token. When the token is retrieved, its string value must be appended in the Authorization header for all subsequent requests to the Graph API. 
 
 	Most of the code above handles the details of authenticating to Azure AD to get a token, using the token to make a call to the Graph API, and then transforming the response so that it can be presented in the View.
-	The most relevant portion for discussion is the following (highlighted) line:
+	The most relevant portion for discussion is the following line:
 
 	`UserProfile profile = JsonConvert.DeserializeObject<UserProfile>(responseString);`
 
@@ -767,7 +768,7 @@ In this task you will execute the solution using the new user interface you buil
     
     _Answering a question_
 
-4. After clicking one of the buttons, the answer should appear. Click Next Question to show the following question. This will trigger the nextQuestion function defined in the controller.
+4. After clicking one of the buttons, the answer should appear. Click **Next Question** to show the following question. This will trigger the nextQuestion function defined in the controller.
 
     ![Requesting the next question](./images/RequestingNextQuestion.png)
     
@@ -902,7 +903,7 @@ The following steps will show you how to deploy the application to Azure as an A
     
     _Geek Quiz published in Azure_
 
-4. If you get an error when running the app in Azure, replace the code in the _Views\Shared\_LoginPartial.cshtml_ file with the following and publish the project again.
+4. If you get an error when running the app in Azure, replace the code in the _Views\Shared\\_LoginPartial.cshtml_ file with the following and publish the project again.
 
 	<!-- mark:1-8,15 -->
 	````HTML
@@ -937,6 +938,50 @@ The following steps will show you how to deploy the application to Azure as an A
 	````
 
 	> **Note:** After running the app, if the logged in user shows "Null User", sign out, and sign back in with the Active Directory account you created earlier. 
+
+<a name="cleanup" />
+##Appendix - Cleanup
+
+In this task you will learn how to delete the resources created created in the previous sections. These are:
+
+* a website
+* a global account
+
+To delete the website follow these steps:
+
+1. In your browser, go to [http://manage.windowsazure.com](http://manage.windowsazure.com), and sign in with your Azure credentials.
+
+2. In the **All Items** page, select your website by clicking the corresponding row.
+
+3. Click **DELETE** in the bottom bar.
+
+	![Clicking Delete website](images/clicking-delete-website.png?raw=true)
+
+	_Clicking Delete to delete website_
+
+4. In the **Delete Confirmation** dialog, check the check box to delete the database associated to the website and click the checkmark button.
+
+	Once the resources are deleted you will see a notification in the bottom bar.
+
+You can delete the global user account by following these steps: 
+
+1. Navigate to the **Active Directory** page and click your directory. 
+
+1. Once in the directory page, click **Users** from the top bar, and then click the user you want to delete. This should select the user row.
+
+1. Click **Delete** in the bottom bar.
+
+	![Clicking Delete in the bottom bar](images/clicking-delete-in-the-bottom-bar.png?raw=true)
+
+	_Clicking Delete to delete the user_
+
+1. Click **Yes** in the confirmation prompt that opens.
+
+	![Confirmation of the deletion of a user](images/confirmation-of-the-deletion-of-a-user.png?raw=true)
+
+	_Confirmation of the deletion of a user_
+
+The user will be deleted. You should see a notification confirming it.
 
 ##Summary
 

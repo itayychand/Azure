@@ -1,4 +1,4 @@
-﻿# Get started with Azure Websites and ASP.NET
+﻿# Getting started with Azure Websites and ASP.NET
 
 This lab shows how to create an ASP.NET web application and deploy it to an Azure Website by using Visual Studio 2015 Preview. It assumes that you have no prior experience using Azure or ASP.NET. On completing the lab, you will have a simple web application up and running in the cloud.
 
@@ -8,6 +8,7 @@ This lab includes the following sections:
 1. [Deploy the application to Azure](#deploy-the-application-to-azure)
 1. [Make a change and redeploy](#make-a-change-and-redeploy)
 1. [Monitor and manage the site in the management portal](#monitor-and-manage-the-site-in-the-management-portal)
+1. [Appendix - Cleanup](#cleanup)
 
 ## Create an ASP.NET web application
 
@@ -35,7 +36,7 @@ In this task you will create the web application that is going to be used throug
 	
     _New ASP.NET Project dialog box_
 
-5. If you haven't already signed in to Azure, Visual Studio prompts you to do so. Click **Sign In**.
+5. If you haven't already signed in to Azure, Visual Studio prompts you to do so. Click **Sign In**. Follow the prompts and provide your credentials.
 
 	![Sign in to Azure](./images/sign-to-Azure.png)
 	
@@ -104,15 +105,7 @@ In this task you will create the web application that is going to be used throug
 	
 	_Successfully validated connection_
     
-4. In the **Settings** tab, click **Next**.
-
-	![Settings tab](./images/publishing-settings.png)
-	
-    _Settings tab_
-
-	You can accept the default values for **Configuration** and **File Publish Options**.
-
-	If you expand **File Publish Options** you will see several settings that enable you to handle scenarios that don't apply to this lab:
+4. The **Settings** tab is shown. If you expand **File Publish Options** you will see several settings that enable you to handle scenarios that don't apply to this lab:
 
 	* **Remove additional files at destination**.
 
@@ -125,6 +118,12 @@ In this task you will create the web application that is going to be used throug
 	* **Exclude files from the App_Data folder**.
 
 		For testing you sometimes have a SQL Server database file in App_Data which you don't want to deploy to production.
+
+	In this case, keep the default values for **Configuration** and **File Publish Options** and click **Next**.
+
+	![Settings tab](./images/publishing-settings.png)
+	
+    _Settings tab_
 
 5. In the **Preview** tab, click **Start Preview**.
 
@@ -251,6 +250,29 @@ The [Azure Management Portal](https://manage.windowsazure.com/) is a web interfa
 	These are just a few of the management portal features. You can also create new websites, delete existing sites, stop and restart sites, and manage other kinds of Azure services, such as databases and virtual machines.
 
 	**Tip:** There is a new management portal in preview which will eventually replace the one you've been using. For more information, see [Azure Preview Portal](http://azure.microsoft.com/en-us/overview/preview-portal/).
+
+<a name="cleanup" />
+##Appendix - Cleanup
+
+In this task you will learn how to delete the website published in the previous section. 
+
+1. In your browser, go to [http://manage.windowsazure.com](http://manage.windowsazure.com), and sign in with your Azure credentials.
+
+2. In the **All Items** page, select your website by clicking the corresponding row.
+
+3. Click **DELETE** in the bottom bar.
+
+	![Clicking Delete website](images/clicking-delete-website.png?raw=true)
+
+	_Clicking Delete to delete website_
+
+4. In the **Delete Confirmation** dialog, check the check box to delete the database associated to the website and click the checkmark button.
+
+	![Delete website and database](images/delete-website-and-database.png?raw=true)
+
+	_Deleting the website and associated database_
+
+	Once the resources are deleted you will see a notification in the bottom bar.
 
 ## Summary
 

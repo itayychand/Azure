@@ -1,4 +1,4 @@
-﻿# Get started with Azure Websites and ASP.NET
+﻿# Getting started with Azure Websites and ASP.NET
 
 This lab shows how to create an ASP.NET web application and deploy it to an Azure Website by using Visual Studio 2015 Preview. It assumes that you have no prior experience using Azure or ASP.NET. On completing the lab, you will have a simple web application up and running in the cloud.
 
@@ -8,10 +8,11 @@ This lab includes the following sections:
 1. [Deploy the application to Azure](#deploy-the-application-to-azure)
 1. [Make a change and redeploy](#make-a-change-and-redeploy)
 1. [Monitor and manage the site in the management portal](#monitor-and-manage-the-site-in-the-management-portal)
+1. [Appendix - Cleanup](#cleanup)
 
 ## Create an ASP.NET web application
 
-In this task you will create the web application that is going to be used troughout this lab.
+In this task you will create the web application that is going to be used throughout this lab.
 
 1. Open Visual Studio. From the **File** menu, hover over the **New** option and click **Project**.
 
@@ -27,15 +28,15 @@ In this task you will create the web application that is going to be used trough
 	
     _New Project dialog box_
 
-	**Note:** Make sure you enter "ContactManager". Code blocks that you'll be copying later assume that the project name is ContactManager.
+	>**Note:** Make sure you enter "ContactManager". Code blocks that you will be copying later assume that the project name is ContactManager.
 
-4. In the **New ASP.NET Project** dialog box, select the **MVC** template. Verify **Authentication** is set to **Individual User Accounts**, **Host in the cloud** is checked and **Website** is selected.
+4. In the **New ASP.NET Project** dialog box, select the **MVC** template. Verify **Authentication** is set to **Individual User Accounts**, **Host in the cloud** is checked and **Website** is selected. Then, click **OK**.
 
 	![New ASP.NET Project dialog box](./images/newProject-dialog-2.png)
 	
     _New ASP.NET Project dialog box_
 
-5. If you haven't already signed in to Azure, Visual Studio prompts you to do so. Click **Sign In**.
+5. If you haven't already signed in to Azure, Visual Studio prompts you to do so. Click **Sign In**. Follow the prompts and provide your credentials.
 
 	![Sign in to Azure](./images/sign-to-Azure.png)
 	
@@ -44,13 +45,13 @@ In this task you will create the web application that is going to be used trough
 6. The configuration wizard will suggest a unique name based on *ContactManager* (see the image below). Select a region near you. You can use [azurespeed.com](http://www.azurespeed.com/ "AzureSpeed.com") to find the lowest latency data center.
 7. If you haven't created a database server before, select **Create new server**, enter a database user name and password.
 
-	![Configure Azure Website](./images/configure-Azure-1.PNG)
-
+	![Configure Azure Website](./images/configure-azure1.png)
+	
     _Configure Azure Website_
 
 	If you have a database server, use that to create a new database. Database servers are a precious resource, and you generally want to create multiple databases on the same server for testing and development rather than creating a database server per database. Make sure your web site and database are in the same region.
 
-	![Configure Azure Website](./images/configure-Azure-2.PNG)
+	![Configure Azure Website](./images/configure-azure2.png)
 	
     _Configure Azure Website_
 
@@ -71,6 +72,8 @@ In this task you will create the web application that is going to be used trough
 	_Web site created_
 
 	And you can see the site and database in **Server Explorer**.
+
+	> **Note:** if the Server Explorer window is not open, you can open it from the **View** menu.
 
 	![Web site created](./images/server-explorer.png)
 	
@@ -102,15 +105,7 @@ In this task you will create the web application that is going to be used trough
 	
 	_Successfully validated connection_
     
-4. In the **Settings** tab, click **Next**.
-
-	![Settings tab](./images/publishing-settings.png)
-	
-    _Settings tab_
-
-	You can accept the default values for **Configuration** and **File Publish Options**.
-
-	If you expand **File Publish Options** you'll see several settings that enable you to handle scenarios that don't apply to this lab:
+4. The **Settings** tab is shown. If you expand **File Publish Options** you will see several settings that enable you to handle scenarios that don't apply to this lab:
 
 	* **Remove additional files at destination**.
 
@@ -124,13 +119,19 @@ In this task you will create the web application that is going to be used trough
 
 		For testing you sometimes have a SQL Server database file in App_Data which you don't want to deploy to production.
 
+	In this case, keep the default values for **Configuration** and **File Publish Options** and click **Next**.
+
+	![Settings tab](./images/publishing-settings.png)
+	
+    _Settings tab_
+
 5. In the **Preview** tab, click **Start Preview**.
 
 	![StartPreview button in the Preview tab](./images/start-preview.png)
 	
 	_Start Preview button - Preview tab_
 
-	The tab displays a list of the files that will be copied to the server. Displaying the preview isn't required to publish the application but is a useful function to be aware of.
+	The tab displays a list of the files that will be copied to the server. Displaying the preview isn't required to publish the application but it's a useful function to be aware of.
 
 6. Click **Publish**.
 
@@ -158,7 +159,7 @@ In this task you will create the web application that is going to be used trough
 
 In this task, you will change the **h1** heading of the home page, run the project locally on your development computer to verify the change, and then deploy the change to Azure.
 
-1. Open the *Views/Home/Index.cshtml* or *.vbhtml* file in **Solution Explorer**, change the **h1** heading from "ASP.NET" to "ASP.NET and Azure", and save the file.
+1. Open the *Views/Home/Index.cshtml* file in **Solution Explorer**, change the **h1** heading from "ASP.NET" to "ASP.NET and Azure", and save the file.
 
 	![MVC index.cshtml](./images/solution-explorer-index.png)
 	
@@ -174,7 +175,7 @@ In this task, you will change the **h1** heading of the home page, run the proje
 	
 	_Web site running locally_
     
-	The `http://localhost` URL shows that it's running on your local computer. By default it's running in IIS Express, which is a lightweight version of IIS designed for use during web application development.
+	The **http://localhost** URL shows that it's running on your local computer. By default it's running in IIS Express, which is a lightweight version of IIS designed for use during web application development.
 
 3. Close the browser.
 
@@ -206,29 +207,31 @@ In this task, you will change the **h1** heading of the home page, run the proje
 
 ## Monitor and manage the site in the management portal
 
-The [Azure Management Portal](/en-us/services/management-portal/) is a web interface that enables you to manage and monitor your Azure services, such as the website you just created. In this task you will look at some of what you can do in the portal.
+The [Azure Management Portal](https://manage.windowsazure.com/) is a web interface that enables you to manage and monitor your Azure services, such as the website you just created. In this task you will look at some of what you can do in the portal.
 
-1. In your browser, go to [http://manage.windowsazure.com](), and sign in with your Azure credentials.
+1. In your browser, go to [http://manage.windowsazure.com](http://manage.windowsazure.com), and sign in with your Azure credentials.
 
 	The portal displays a list of your Azure services.
 
 2. Click the name of your website.
 
 	![Portal home page with new web site called out](./images/select-website.png)
+
     _Portal Home Page_
   
 3. Click the **Dashboard** tab.
 
-	The **Dashboard** tab displays an overview of usage statistics and link for a number of commonly used site management functions. Under **Quick Glance** you'll also find a link to your application's home page.
+	The **Dashboard** tab displays an overview of usage statistics and link for a number of commonly used site management functions. Under **Quick Glance** you will also find a link to your application's home page.
 
 	![Portal web site dashboard tab](./images/website-dashboard.png)
+
   	_Website's Dashboard_
     
-	At this point your site hasn't had much traffic and may not show anything in the graph. If you browse to your application, refresh the page a few times, and then refresh the portal **Dashboard** page, you'll see some statistics show up. You can click the **Monitor** tab for more details.
+	At this point your site hasn't had much traffic and may not show anything in the graph. If you browse to your application, refresh the page a few times, and then refresh the portal **Dashboard** page, you will see some statistics show up. You can click the **Monitor** tab for more details.
 
 4. Click the **Configure** tab.
 
-	The [Configure](/en-us/documentation/articles/web-sites-configure//) tab enables you to control the .NET version used for the site, enable features such as [WebSockets](/blog/2013/11/14/introduction-to-websockets-on-windows-azure-web-sites/) and [diagnostic logging](/en-us/documentation/articles/web-sites-enable-diagnostic-log/), set [connection string values](/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/), and more. 
+	The [Configure](http://azure.microsoft.com/en-us/documentation/articles/web-sites-configure/) tab enables you to control the .NET version used for the site, enable features such as [WebSockets](http://azure.microsoft.com/blog/2013/11/14/introduction-to-websockets-on-windows-azure-web-sites/) and [diagnostic logging](http://azure.microsoft.com/en-us/documentation/articles/web-sites-enable-diagnostic-log/), set [connection string values](http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/), and more. 
 
 	![Portal web site configure tab](./images/website-configure.png)
 	
@@ -236,7 +239,7 @@ The [Azure Management Portal](/en-us/services/management-portal/) is a web inter
     
 5. Click the **Scale** tab.
 
-	For the paid tiers of the Websites service, the [Scale](/en-us/documentation/articles/web-sites-scale/) tab enables you to control the size and number of machines that service your web application in order to handle variations in traffic.
+	For the paid tiers of the Websites service, the [Scale](http://azure.microsoft.com/en-us/documentation/articles/web-sites-scale/) tab enables you to control the size and number of machines that service your web application in order to handle variations in traffic.
 
 	You can scale manually or configure criteria or schedules for automatic scaling.
 
@@ -244,9 +247,32 @@ The [Azure Management Portal](/en-us/services/management-portal/) is a web inter
 	
     _Website's Scale Options_
 
-	These are just a few of the management portal's features. You can also create new websites, delete existing sites, stop and restart sites, and manage other kinds of Azure services, such as databases and virtual machines.
+	These are just a few of the management portal features. You can also create new websites, delete existing sites, stop and restart sites, and manage other kinds of Azure services, such as databases and virtual machines.
 
-	**Tip:** There is a new management portal in preview which will eventually replace the one you've been using. For more information, see [Azure Preview Portal](/en-us/overview/preview-portal/).
+	**Tip:** There is a new management portal in preview which will eventually replace the one you've been using. For more information, see [Azure Preview Portal](http://azure.microsoft.com/en-us/overview/preview-portal/).
+
+<a name="cleanup" />
+##Appendix - Cleanup
+
+In this task you will learn how to delete the website published in the previous section. 
+
+1. In your browser, go to [http://manage.windowsazure.com](http://manage.windowsazure.com), and sign in with your Azure credentials.
+
+2. In the **All Items** page, select your website by clicking the corresponding row.
+
+3. Click **DELETE** in the bottom bar.
+
+	![Clicking Delete website](images/clicking-delete-website.png?raw=true)
+
+	_Clicking Delete to delete website_
+
+4. In the **Delete Confirmation** dialog, check the check box to delete the database associated to the website and click the checkmark button.
+
+	![Delete website and database](images/delete-website-and-database.png?raw=true)
+
+	_Deleting the website and associated database_
+
+	Once the resources are deleted you will see a notification in the bottom bar.
 
 ## Summary
 
